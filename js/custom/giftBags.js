@@ -5,3 +5,11 @@ var mySwiper = new Swiper('.swiper-container', {
     	el: '.swiper-pagination',
   	},
 })
+$(function(){
+	$(".sureBtn").on("touchstart",function(){
+		$(this).css("background","#d65e0e");
+	})
+	$(".sureBtn").on("touchend",function(){
+		$(this).css("background","#FF6600");
+	})
+})
