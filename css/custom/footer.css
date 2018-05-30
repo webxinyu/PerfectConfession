@@ -1,0 +1,36 @@
+footer {		/* 底部导航 */
+	height: 44px;
+	position: fixed;
+	bottom:0;
+	left: 0;
+	width: 100%;
+	background: #fff;
+	border-top: 1px #ddd solid;
+}
+footer ul {
+	display: flex;
+	width: 100%;
+}
+footer ul li {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	text-align: center;	
+	font-size: 0.25rem;
+}
+footer ul li i {
+	flex: 1;
+	margin-top: 0.07rem;
+}
+footer ul li i.iconfont {
+	font-size: 0.35rem;
+	color: #8c8c8c;
+}
+footer ul li b {
+	flex: 1;
+	font-weight: normal;
+	font-size: 0.18rem;
+	margin-top: 0.07rem;
+	color: #8c8c8c;
+}
+
