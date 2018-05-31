@@ -6,7 +6,7 @@ footer ul li:nth-of-type(3) b {
 	color: #FF6600;
 }
 .storyList {			/* 事迹列表 */
-	padding: 0 7px;
+	padding: 0 7px 44px 7px;
 }
 .storyList li {
 	height: 1.6rem;
