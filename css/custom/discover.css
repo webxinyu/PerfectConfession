@@ -5,3 +5,82 @@ footer ul li:nth-of-type(3) i.iconfont {		/* 当前窗口底部颜色 */
 footer ul li:nth-of-type(3) b {
 	color: #FF6600;
 }
+.storyList {			/* 事迹列表 */
+	padding: 0 7px;
+}
+.storyList li {
+	height: 1.6rem;
+	position: relative;
+	margin-bottom: 17px;
+}
+.storyList li article {
+	height: 1.6rem;
+	width: 0.5rem;
+	background: #f00;
+	border-radius: 0.25rem;
+}
+.storyList li:nth-of-type(2) article{
+	background: blueviolet;
+}
+.storyList li:nth-of-type(3) article{
+	background: deepskyblue;
+}
+.storyList li:nth-of-type(4) article{
+	background: saddlebrown;
+}
+.storyList li:nth-of-type(5) article{
+	background: greenyellow;
+}
+.storySummary {
+	position: absolute;
+	height: 1.6rem;
+	width: 6rem;
+	background: #fff;
+	top: 0;
+	left: 0.1rem;
+	border: 1px #ddd solid;
+	border-radius: 0.25rem;
+	box-shadow: -5px -5px 3px #ddd inset;
+	overflow: hidden;
+	display: flex;
+}
+.summaryLeft {		/* 标题和简介 */
+	flex: 1;
+	padding-left: 0.08rem;
+}
+.summaryLeft>h1 {
+	font-size: 0.35rem;
+	height: 1rem;
+	line-height: 1rem;
+	font-style: italic;
+	color: #FF0000;
+}
+.storyList li:nth-of-type(2) .storySummary .summaryLeft>h1{
+	color: blueviolet;
+}
+.storyList li:nth-of-type(3) .storySummary .summaryLeft>h1{
+	color: deepskyblue;
+}
+.storyList li:nth-of-type(4) .storySummary .summaryLeft>h1{
+	color: saddlebrown;
+}
+.storyList li:nth-of-type(5) .storySummary .summaryLeft>h1{
+	color: greenyellow;
+}
+.summaryLeft>h2 {
+	font-size: 0.25rem;
+	height: 0.6rem;
+	width: 2.5rem;
+	font-weight: normal;
+	overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap
+}
+.publicationTime {
+	flex: 1;
+	font-size: 0.25rem;
+	color: #FF6600;
+	height: 1.6rem;
+	line-height: 1rem;
+	text-align: center;
+}
