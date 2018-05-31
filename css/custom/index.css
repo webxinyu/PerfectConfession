@@ -2,6 +2,7 @@ header {		/* 头部 */
 	height: 3rem;
 	overflow: hidden;
 	background: #fff;
+	width: 100%;
 }
 .swiper-container {		/* banner */
 	height: 100%;
@@ -15,8 +16,9 @@ header {		/* 头部 */
 	background: #ff6600;
 }
 .makingGiftBags {		/* 制作礼包按钮及精选礼包推荐 */
-	margin: 0 7px;
 	background: #fff;
+	padding: 0 7px;
+	overflow: hidden;
 }
 .makingGiftBags>h2 {		/* 精选推荐 */
 	font-size: 0.26rem;
@@ -44,14 +46,17 @@ header {		/* 头部 */
 	height: 2rem;
 	position: relative;
 }
-.makingGiftBags>h1>input {
+.makingGiftBags>h1>a {
 	display: inline-block;
 	height: 0.6rem;
+	line-height: 0.6rem;
+	text-align: center;
 	width: 3rem;
 	background: #FF6600;
 	color: #fff;
 	border: 1px #b54e09;
 	padding: 0;
+	font-size: 0.3rem;
 	position: absolute;
 	top: 50%;
 	margin-top: -0.3rem;
