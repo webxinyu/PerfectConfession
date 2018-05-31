@@ -20,3 +20,7 @@ $("#openBagsListBtn").on("touchstart",function(){
 $("#openBagsListBtn").on("touchend",function(){
 	$(this).css("background","#FF6600");
 })
+/* 跳转到商品列表页 */
+$("#openBagsListBtn").on("touchstart",function(){
+	window.location.href = "html/shoppingList.html";
+});

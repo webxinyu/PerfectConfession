@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta charset="UTF-8">
+		<title>商品列表</title>
+		<link rel="stylesheet" type="text/css" href="../css/custom/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/swiper-4.2.6.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/animate.min.css"/>
+		<style type="text/css">
+			header {
+				height: 2rem;
+				width: 100%;
+			}
+			header img {
+				height: 100%;
+				width: 100%;
+			}
+			article {
+				position: fixed;
+				height: 1rem;
+				width: 1rem;
+				top: 1rem;
+				right: 0.2rem;
+			}
+			article img {
+				width: 100%;
+				height: 100%;
+			}
+			.commodityList {		/* 商品列表 */
+				padding: 0 7px;
+				background: #fff;
+			}
+			.commodityList li {
+				height: 2rem;
+				border-bottom: 1px #ddd solid;
+			}
+			.commodityList li .shopImg {
+				float: left;
+				height: 1.6rem;
+				width: 1.6rem;
+				margin: 0.2rem;
+			}
+			.commodityList li .shopImg img {
+				width: 100%;
+				height: 100%;
+			}
+			.commodityList li .detalis {
+				width: 2rem;
+				height: 1.6rem;
+				margin: 0.2rem 0;
+				float: left;
+			}
+			.commodityList li .detalis h1 {
+				height: 1rem;
+				line-height: 1rem;
+				font-size: 0.3rem;
+			}
+			.commodityList li .detalis h2 {
+				height: 0.6rem;
+				line-height: 0.6rem;
+				font-size: 0.25rem;
+			}
+			.commodityList li .addCommodity {		/* 选择商品 */
+				width: 2rem;
+				height: 0.6rem;
+				margin-top: 1rem;
+				float: right;
+				display: flex;
+			}
+			.commodityList li .addCommodity .con {
+				text-align: center;
+				flex: 1;
+				position: relative;
+			}
+			.commodityList li .addCommodity .con>span {
+				position: absolute;
+				display: block;
+				font-weight: normal;
+				height: 0.4rem;
+				width: 0.4rem;
+				line-height: 0.4rem;
+				left: 50%;
+				margin-left: -0.2rem;
+				top: 50%;
+				margin-top: -0.2rem;
+				text-align: center;
+				border: 1px #ddd solid;
+				font-size: 0.5rem;
+				border-radius: 50%;
+			}
+			.commodityList li .addCommodity .con:nth-of-type(1)>span .iconfont {		/* 减号 */
+				font-size: 0.4rem;
+				color: #ddd;
+			}
+			.commodityList li .addCommodity .con:nth-of-type(3)>span {
+				border: 1px #f00 solid;
+			}
+			.commodityList li .addCommodity .con:nth-of-type(3)>span .iconfont {		/* 加号 */
+				font-size: 0.4rem;
+				color: #f00;
+			}
+			.commodityList li .addCommodity .con>i {				/* 单品数量 */
+				position: absolute;
+				display: block;
+				font-weight: normal;
+				font-style: normal;
+				height: 0.4rem;
+				width: 0.6rem;
+				line-height: 0.4rem;
+				left: 50%;
+				margin-left: -0.3rem;
+				top: 50%;
+				margin-top: -0.2rem;
+				text-align: center;
+				border: none;
+				font-size: 0.3rem;			
+			}
+			footer {		/* 合计以及结算按钮 */
+				height: 1rem;
+				width: 100%;
+				position: fixed;
+				left: 0;
+				bottom: 0;
+				background: #fff;
+				border-top: 1px #ddd solid;
+				display: flex;
+			}
+			footer .total {
+				flex: 2;
+				margin-left: 7px;
+			} 
+			footer .total h1 {
+				height: 0.6rem;
+				line-height: 0.6rem;
+				font-size: 0.3rem;
+				font-weight: normal;
+			}
+			footer .total h1>span {
+				color: #f00;
+				font-size: 0.35rem;
+			}
+			footer .total h1>b {
+				color: #f00;
+			}
+			footer .total h2 {
+				height: 0.4rem;
+				line-height: 0.4rem;
+				font-size: 0.2rem;
+				font-weight: normal;
+			}
+			footer .total h2 i {
+				font-style: normal;
+			}
+			footer p {
+				flex: 1;
+				height: 1rem;
+				text-align: center;
+				position: relative;
+			}
+			footer p a {
+				display: inline-block;
+				height: 1rem;
+				line-height: 1rem;
+				width: 2rem;
+				text-align: center;
+				background: #FF6600;
+				color: #fff;
+				font-size: 0.3rem;
+				position: absolute;
+				top: 0;
+				right: 0;
+				text-decoration: none;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<img src="../img/shoppingListBanner.jpg"/>
+		</header>
+		<article>
+			<div class="swiper-slide">
+				<img id="bagsAni" swiper-animate-effect="bounceIn" swiper-animate-duration="2s" swiper-animate-delay="0.3s" src="../img/gift.png"/>
+			</div>
+		</article>
+		<ul class="commodityList">
+			<li>
+				<span class="shopImg"><img src="../img/shopping.jpeg"/></span>
+				<div class="detalis">
+					<h1>奶油蛋糕</h1>
+					<h2>&yen;<b>5.00</b></h2>
+				</div>
+				<div class="addCommodity">
+					<div class="con">
+						<span class="increase"><i class="iconfont icon-move"></i></span>
+					</div>
+					<div class="con"><i class="unitQuantity">0</i></div>
+					<div class="con">
+						<span class="reduce"><i class="iconfont icon-add1"></i></span>
+					</div>
+				</div>
+			</li>
+			<li>
+				<span class="shopImg"><img src="../img/shopping.jpeg"/></span>
+				<div class="detalis">
+					<h1>奶油蛋糕</h1>
+					<h2>&yen;<b>20.00</b></h2>
+				</div>
+				<div class="addCommodity">
+					<div class="con">
+						<span class="increase"><i class="iconfont icon-move"></i></span>
+					</div>
+					<div class="con"><i class="unitQuantity">0</i></div>
+					<div class="con">
+						<span class="reduce"><i class="iconfont icon-add1"></i></span>
+					</div>
+				</div>
+			</li>
+			<li>
+				<span class="shopImg"><img src="../img/shopping.jpeg"/></span>
+				<div class="detalis">
+					<h1>奶油蛋糕</h1>
+					<h2>&yen;<b>10.00</b></h2>
+				</div>
+				<div class="addCommodity">
+					<div class="con">
+						<span class="increase"><i class="iconfont icon-move"></i></span>
+					</div>
+					<div class="con"><i class="unitQuantity">0</i></div>
+					<div class="con">
+						<span class="reduce"><i class="iconfont icon-add1"></i></span>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<footer>
+			<div class="total">
+				<h1>合计：<span>&yen;</span><b id="totalPrice">0.00</b></h1>
+				<h2>礼品盒：<b> 2</b>元 &nbsp;&nbsp;规格：<i>小 </i></h2>
+			</div>
+			<p><a id="toFirmOrder" href="javascript:;">去结算</a></p>
+		</footer>
+	</body>
+	<script src="../js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/swiper-4.2.6.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/swiper.animate1.0.3.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+     	var mySwiper = new Swiper ('.swiper-container', {
+		    on:{
+		      init: function(){
+		        swiperAnimateCache(this); //隐藏动画元素 
+		        swiperAnimate(this); //初始化完成开始动画
+		      }, 
+		      slideChangeTransitionEnd: function(){ 
+		        swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+		      } 
+		    }
+		})
+	  	var totalPrice = parseFloat($("#totalPrice").text());
+		  /* 点击减号 */
+		$(".increase").on("touchstart",function(){
+		 	var current = parseInt($(this).parent().next().find("i").text());	//单品数量
+		 	current--;
+		 	if (current < 0) {		//单品数量小于0，跳出当前按钮事件
+		 		current = 0;
+		 		return false;
+		 	}
+		 	$(this).parent().next().find("i").text(current);
+		 	totalPrice -= parseFloat($(this).parent().parent().prev().find("h2").find("b").text());		//计算总价
+		 	if (totalPrice <= 0) {
+		 		totalPrice = 0;
+		 	}
+		 	$("#totalPrice").text(totalPrice);
+		});
+		  /* 点击加号 */
+		$(".reduce").on("touchstart",function(){
+		 	var current = parseFloat($(this).parent().prev().find("i").text());	//单品数量
+		 	current++;
+		 	$(this).parent().prev().find("i").text(current);
+		 	totalPrice += parseFloat($(this).parent().parent().prev().find("h2").find("b").text());		//计算总价
+		 	$("#totalPrice").text(totalPrice);
+		 	$("#bagsAni").addClass("ani bounceIn animated");
+		 	var timer = null;
+		 	clearTimeout(timer);
+		 	timer = setTimeout(function(){
+		 		$("#bagsAni").removeClass("ani bounceIn animated");
+		 		clearTimeout(timer);
+		 	},500);
+		});
+		$("#toFirmOrder").on("touchstart",function(){
+			window.location.href = "firmOrder.html?totalPrice="+totalPrice+"&id=" + 1;
+		})
+	</script>
+</html>
