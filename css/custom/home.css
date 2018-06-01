@@ -5,3 +5,209 @@ footer ul li:nth-of-type(4) i.iconfont {		/* 当前窗口底部颜色 */
 footer ul li:nth-of-type(4) b {
 	color: #FF6600;
 }
+header {
+	height: 3rem;
+	background: linear-gradient(to right, #f00 , #f60);
+}
+header>h1 {
+	height:2rem;
+	line-height:2rem;
+	font-size:0.4rem;
+	text-align:center;
+	color: #fff;
+}
+section {
+	height: 3rem;
+	position: relative;
+}
+.information {			
+	height: 4rem;
+	width: 6rem;
+	position: absolute;
+	border: 1px #ddd solid;
+	background: #fff;
+	left: 50%;
+	margin-left: -3rem;
+	top: -1.5rem;
+	border-radius: 0.3rem;
+}
+.personalInforation {		/* 个人信息及订单详情 */
+	height: 2rem;
+}
+.isLogin {
+	height: 2rem;
+	overflow: hidden;
+}
+.headSculpture {			/* 头像 */
+	float: left;
+	height: 2rem;
+	width: 2rem;
+}
+.headSculpture>span {
+	display: block;
+	width: 1.6rem;
+	height: 1.6rem;
+	margin: 0.2rem;
+	border: 1px #ddd solid;
+	border-radius: 50%;
+	box-shadow: 0 0 8px #8C8C8C;
+	overflow: hidden;
+}
+.headSculpture>span>img {
+	height: 100%;
+	width: 100%;
+}
+.nickname {			/* 昵称及手机号 */
+	float: right;
+	width: 3.8rem;
+	height: 2rem;
+	padding: 0.3rem 0;
+}
+.nickname>p:nth-of-type(1) {
+	height: 0.8rem;
+	line-height: 0.8rem;
+	font-size: 0.4rem;
+}
+.nickname>p:nth-of-type(2) {
+	height: 0.6rem;
+	line-height: 0.6rem;
+	font-size: 0.3rem;
+	font-weight: normal;
+}
+.orderStatus {		/* 订单状态 */
+	height: 2rem;
+	border-top: 1px #ddd solid;
+	display: flex;
+}
+.orderStatus li {
+	flex: 1;
+	position: relative;
+}
+.orderStatus li h1 {
+	height: 1.2rem;
+	line-height: 1.2rem;
+	text-align: center;
+}
+.orderStatus li h1 span {
+	display: inline-block;
+	text-align: center;
+	height: 1rem;
+	width: 1rem;
+	border-radius: 50%;
+	margin-top: 0.2rem;
+	position: relative;
+}
+.orderStatus li:nth-of-type(1) h1 span {
+	background: #00BFFF;
+}
+.orderStatus li:nth-of-type(2) h1 span {
+	background: #8A2BE2;
+}
+.orderStatus li:nth-of-type(3) h1 span {
+	background: #B54E09;
+}
+.orderStatus li:nth-of-type(4) h1 span {
+	background: #FF6600;
+}
+.orderStatus li h1 .iconfont {
+	font-size: 0.6rem;
+	color: #fff;
+	position: absolute;
+	top: 50%;
+	margin-top: -0.6rem;
+	left: 50%;
+	margin-left: -0.3rem;
+}
+.orderStatus li h2 {
+	height: 0.8rem;
+	line-height: 0.8rem;
+	text-align: center;
+	font-size: 0.25rem;
+	font-weight: normal;
+}
+.orderStatus li .statusNum {		/* 订单状态的数值 */
+	display: block;
+	height: 0.28rem;
+	line-height: 0.32rem;
+	text-align: center;
+	padding: 0 0.08rem;
+	border-radius: 0.14rem;
+	font-size: 0.22rem;
+	position: absolute;
+	right: 0.2rem;
+	top: 0.2rem;
+	background: #f00;
+	color: #fff;
+}
+.informationManagement {		/* 信息管理列表 */
+	background: #fff;
+	border-top: 1px #ddd solid;
+	border-bottom: 1px #ddd solid;
+	padding: 0 7px;
+	margin: 17px 0;
+}
+.informationManagement li {
+	height: 1rem;
+	display: flex;
+	border-bottom: 1px #ddd solid;
+}
+.informationManagement li:last-of-type {
+	border-bottom: none;
+}
+.informationManagement li span {
+	position: relative;
+}
+.informationManagement li span:nth-of-type(1) .iconfont {
+	height: 0.4rem;
+	font-size: 0.4rem;
+	color: #f60;
+	position: absolute;
+	top: 50%;
+	left: 10%;
+	margin-top: -0.2rem;
+}
+.informationManagement li span:nth-of-type(3) .iconfont {
+	height: 0.4rem;
+	font-size: 0.4rem;
+	color: #ccc;
+	position: absolute;
+	top: 50%;
+	right: 10%;
+	margin-top: -0.2rem;
+}
+.informationManagement li span:nth-of-type(1) {
+	flex: 1;
+}
+.informationManagement li span:nth-of-type(2) {
+	flex: 6;
+	height: 1rem;
+	line-height: 1rem;
+	font-size: 0.33rem;
+	color: #333;
+}
+.informationManagement li span:nth-of-type(3) {
+	flex: 1;
+	text-align: right;
+}
+.logOff {			/* 退出登录 */
+	height: 1rem;
+	margin-bottom: 50px;
+	background: #fff;
+	position: relative;
+}
+.logOff a {
+	display: inline-block;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	background: #f60;
+	width: 4rem;
+	text-align: center;
+	text-decoration: none;
+	font-size: 0.3rem;
+	color: #fff;
+	position: absolute;
+	top: 50%;
+	margin-top: -0.4rem;
+	left: 50%;
+	margin-left: -2rem;
+}

@@ -11,8 +11,93 @@
 		<link rel="stylesheet" type="text/css" href="css/custom/footer.css"/>
 	</head>
 	<body>
-		
-		
+		<header>
+			<h1>我的</h1>
+		</header>
+		<section>
+			<div class="information">
+				<div class="personalInforation">
+					<!-- 已登录 -->
+					<div class="isLogin">
+						<div class="headSculpture">
+							<span id="headSculptureId">
+								<img src="img/shopping.jpeg" />
+							</span>
+						</div>
+						<div class="nickname">
+							<p>昵称</p>
+							<p>13271060937</p>
+						</div>
+					</div>
+					<!-- 未登录 -->
+					<div class="noLogin" style="display: none;">
+						<div class="headSculpture">
+							<span id="headSculptureId">
+								<i class="iconfont icon-peoplefill"></i>
+							</span>
+						</div>
+						<div class="nickname">
+							<h1>登录/注册</h1>
+						</div>
+					</div>
+				</div>
+				<!-- 订单信息 -->
+				<ul class="orderStatus">
+					<li>
+						<h1><span><i class="iconfont icon-send"></i></span></h1>
+						<h2>代发货</h2>
+						<span class="statusNum" id="">0</span>
+					</li>
+					<li>
+						<h1><span><i class="iconfont icon-deliver"></i></span></h1>
+						<h2>待收货</h2>
+						<span class="statusNum" id="">0</span>
+					</li>
+					<li>
+						<h1><span><i class="iconfont icon-servicefill"></i></span></h1>
+						<h2>售后服务</h2>
+						<span class="statusNum" id="">0</span>
+					</li>
+					<li>
+						<h1><span><i class="iconfont icon-edit"></i></span></h1>
+						<h2>待评价</h2>
+						<span class="statusNum" id="">0</span>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<!-- 信息管理 -->
+		<ul class="informationManagement">
+			<li>
+				<span><i class="iconfont icon-calendar"></i></span>
+				<span>全部订单</span>
+				<span><i class="iconfont icon-right"></i></span>
+			</li>
+			<li>
+				<span><i class="iconfont icon-location"></i></span>
+				<span>地址管理</span>
+				<span><i class="iconfont icon-right"></i></span>
+			</li>
+			<li>
+				<span><i class="iconfont icon-mail"></i></span>
+				<span>我的书信</span>
+				<span><i class="iconfont icon-right"></i></span>
+			</li>
+			<li>
+				<span><i class="iconfont icon-newshot"></i></span>
+				<span>我的评价</span>
+				<span><i class="iconfont icon-right"></i></span>
+			</li>
+			<li>
+				<span><i class="iconfont icon-lock"></i></span>
+				<span>更改密码</span>
+				<span><i class="iconfont icon-right"></i></span>
+			</li>
+		</ul>
+		<!-- 退出登录 -->
+		<p class="logOff">
+			<a href="javascript:;">退出登录</a>
+		</p>
 		<!-- 底部导航 -->
 		<footer>
 			<ul>
