@@ -9,7 +9,7 @@ $(function(){
 			}
 			
 			/* 点击效果 */
-			$(".storySummary").on("touchstart",function(){
+			$(".storySummary").on("click",function(){
 				$(this).css("background","#eee");
 				window.location.href = "html/noteContent.html"
 			})

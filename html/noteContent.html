@@ -102,11 +102,22 @@
 			<p>
 				<b>6</b>
 				<span>
-					<i id="giveTheThumbsUp " class="iconfont icon-appreciate"></i>
+					<i id="giveTheThumbsUp" class="iconfont icon-appreciate" style="color: #666;"></i>
 				</span>	
 			</p>
 		</section>
 		<script src="../js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$("#giveTheThumbsUp").on("touchstart",function(){
+				console.log($("#giveTheThumbsUp"))
+//				if ($(this).find('.iconfont')) {
+//					
+//				} else{
+//					$(this).find('.iconfont').css("color","#f00");
+//				}
+				
+			})
+		</script>
 	</body>
 </html>
