@@ -6,12 +6,148 @@
 		<title>支付</title>
 		<link rel="stylesheet" type="text/css" href="../css/custom/reset.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+		<style type="text/css">
+			header {
+				height: 44px;
+				line-height: 44px;
+				background: #f60;
+				color: #fff;
+				font-size: 0.3rem;
+				text-align: center;
+				position: fixed;
+				left: 0;
+				top: 0;
+				width: 100%;
+			}
+			.receivingInformationCon {				/* 收货人信息 */
+				margin-top: 44px;
+				background: #fff;
+			}
+			.receivingInformationCon>img {
+				display: block;
+				width: 100%;
+			}
+			.receivingInformation {
+				padding: 0 7px;
+			}
+			.receivingInformation li {
+				height: 40px;
+				display: flex;
+				border-bottom: 1px #e9e2e2 solid;
+			}
+			.receivingInformation li>span {
+				flex: 1;
+				text-align: center;
+				position: relative;
+			}
+			.receivingInformation li>span .iconfont {
+				color: #f60;
+				font-size: 0.4rem;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-top: -0.2rem;
+				margin-left: -0.2rem;
+			}
+			.receivingInformation li>input {
+				flex: 8;
+				outline: none;
+				border: none;
+			}
+			.receivingInformation li:last-of-type {
+				position: relative;
+			}
+			.receivingInformation li:last-of-type p {
+				height: 40px;
+				line-height: 40px;
+				text-align: right;
+				font-size: 0.25rem;
+				color: #333;
+				width: 2rem;
+				position: absolute;
+				right: 0;
+			}
+			.receivingInformation li:last-of-type .checkCon {
+				height: 40px;
+				width: 40px;
+				position: absolute;
+				right: 2rem;
+			}
+			.receivingInformation li:last-of-type .checkCon input {
+				display: block;
+				height: 16px;
+				width: 16px;
+				position: absolute;
+				top: 50%;
+				margin-top: -8px;
+				left: 50%;
+			}
+			.receivingInformation li:last-of-type .checkCon label{			/* label对勾 */
+				display: block;
+				height: 20px;
+				width: 20px;
+				position: absolute;
+				top: 50%;
+				margin-top: -10px;
+				left: 50%;
+				z-index: 99;
+				background: #fff;
+			}
+			.receivingInformation li:last-of-type .checkCon label .iconfont {
+				font-size: 18px;
+				color: #ccc;
+				position: absolute;
+				top: 50%;
+				margin-top: -10px;
+				left: 50%;
+				margin-left: -3px;
+			}
+			.receivingInformation li:last-of-type .checkCon label .iconfont:nth-of-type(2) {
+				color: #f00;
+			}
+		</style>
 	</head>
 	<body>
-		
-		
+		<header>提交订单</header>
+		<div class="receivingInformationCon">
+			<img src="../img/addressBg.png"/>
+			<ul class="receivingInformation">
+				<li>
+					<span><i class="iconfont icon-dingwei"></i></span>
+					<input type="text" name="dingwei" id="dingwei" placeholder="定位地址" value="" />
+				</li>
+				<li>
+					<span><i class="iconfont icon-location"></i></span>
+					<input type="text" name="dingwei" id="dingwei" placeholder="所在地区" value="" />
+				</li>
+				<li>
+					<span><i class="iconfont icon-qiyeyuanquwuye-xianxing"></i></span>
+					<input type="text" name="location" id="location"placeholder="详细地址，街道、楼牌号等" value="" />
+				</li>
+				<li>
+					<span><i class="iconfont icon-yonghu-xianxing"></i></span>
+					<input type="text" name="location" id="location" placeholder="收货人姓名" value="" />
+				</li>
+				<li>
+					<span><i class="iconfont icon-Phoneshouji"></i></span>
+					<input type="text" name="location" id="location" placeholder="请填写收货人手机号码" value="" />
+				</li>
+				<li>
+					<div class="checkCon">
+						<input type="checkbox" name="saveAddress" id="saveAddress" value="" />
+						<label for="saveAddress">
+							<i id="noCheck" class="iconfont icon-roundcheck"></i>
+							<i id="hasCheck" style="display: none;" class="iconfont icon-roundcheckfill"></i>
+						</label>
+					</div>
+					<p>保存为常用地址</p>
+				</li>
+			</ul>
+			<img src="../img/addressBg.png"/>
+		</div>
 		<script src="../js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/iconfont.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			function GetRequest() {   
 			   var url = location.search; //获取url中"?"符后的字串   
@@ -25,7 +161,17 @@
 			   }   
 			   return theRequest;   
 			} 
-			console.log(GetRequest());
+			$("#saveAddress").on("click",function(){
+				console.log($("#saveAddress"));
+				if ($("#saveAddress")[0].checked == true) {
+					$("#hasCheck").css("display","block");
+					$("#noCheck").css("display","none");
+				} else{
+					$("#hasCheck").css("display","none");
+					$("#noCheck").css("display","block");
+				}
+			})
+			
 		</script>
 	</body>
 </html>
