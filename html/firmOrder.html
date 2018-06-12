@@ -3,7 +3,7 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 		<meta charset="UTF-8">
-		<title>支付</title>
+		<title>提交订单</title>
 		<link rel="stylesheet" type="text/css" href="../css/custom/reset.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
 		<style type="text/css">
@@ -34,6 +34,9 @@
 				height: 40px;
 				display: flex;
 				border-bottom: 1px #e9e2e2 solid;
+			}
+			.receivingInformation li:last-of-type {
+				border-bottom: 0;
 			}
 			.receivingInformation li>span {
 				flex: 1;
@@ -162,7 +165,6 @@
 			   return theRequest;   
 			} 
 			$("#saveAddress").on("click",function(){
-				console.log($("#saveAddress"));
 				if ($("#saveAddress")[0].checked == true) {
 					$("#hasCheck").css("display","block");
 					$("#noCheck").css("display","none");
