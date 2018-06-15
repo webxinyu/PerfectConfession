@@ -7,20 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/custom/reset.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
 		<style type="text/css">
-			header {
-				height: 44px;
-				line-height: 44px;
-				background: #f60;
-				color: #fff;
-				font-size: 0.3rem;
-				text-align: center;
-				position: fixed;
-				left: 0;
-				top: 0;
-				width: 100%;
-			}
 			.receivingInformationCon {				/* 收货人信息 */
-				margin-top: 44px;
 				background: #fff;
 			}
 			.receivingInformationCon>img {
@@ -108,10 +95,148 @@
 			.receivingInformation li:last-of-type .checkCon label .iconfont:nth-of-type(2) {
 				color: #f00;
 			}
+			.giftBoxPrice {				/* 礼盒详情和总价 */
+				height: 1rem;
+				border-top: 1px #eee solid;
+				border-bottom: 1px #eee solid;
+				padding: 0.2rem 7px;
+				background: #fff;
+				overflow: hidden;
+				margin-top: 7px;
+			}
+			.giftBoxPrice>img {
+				float: left;
+				height: 1rem;
+				width: 1rem;
+				display: block;
+			}
+			.gitBoxDetail {
+				float: left;
+				height: 1rem;
+				width: 2.6rem;
+				padding-left: 7px;
+			}
+			.gitBoxDetail>h1 {
+				height: 0.6rem;
+				line-height: 0.6rem;
+				font-size: 0.28rem;
+				font-weight: normal;
+			}
+			.gitBoxDetail>h2 {
+				height: 0.4rem;
+				font-size: 0.22rem;
+				font-weight: normal;
+			}
+			.totalPrice {
+				float: right;
+				height: 1rem;
+				line-height: 1rem;
+				width: 2rem;
+				font-size: 0.4rem;
+				color: #f00;
+				text-align: right;
+			}
+			.writtenMessage {			/* 书信编辑 */
+				height: 1rem;
+				border-top: 1px #eee solid;
+				border-bottom: 1px #eee solid;
+				padding: 0.2rem 7px;
+				background: #fff;
+				overflow: hidden;
+				margin-top: 7px;
+			}
+			.writtenMessage>img {
+				float: left;
+				height: 1rem;
+				width: 1.2rem;
+				display: block;
+			}
+			.general {
+				float: left;
+				height: 1rem;
+				line-height: 1rem;
+				width: 2.6rem;
+				padding-left: 7px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				font-size: 0.22rem;
+				color: #333;
+			}
+			.general>p {
+				height: 1rem;
+				line-height: 1rem;
+				width: 2.6rem;
+				color: #ccc;
+				font-size: 0.2rem;
+			}
+			.editCon {
+				float: right;
+				height: 0.6rem;
+				width: 1.6rem;
+				padding: 0.2rem;
+				font-size: 0.4rem;
+				color: #f00;
+				text-align: right;
+			}
+			.editCon>button {
+				outline: none;
+				border: none;
+				display: block;
+				width: 1.6rem;
+				height: 0.6rem;
+				background: #f60;
+				color: #fff;
+				font-size: 0.3rem;
+				border-radius: 5px;
+				box-shadow: 0px 0px 5px #999;
+			}
+			
+			
+			/* 书信编辑 */
+			.popUp {
+				position: fixed;
+				width: 100%;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				background: rgba(0,0,0,0.6);
+				z-index: 99999;
+				display: none;
+			}
+			.popUp h1 {
+				height: 44px;
+				line-height: 44px;
+				margin-bottom: 10px;
+				border-bottom: 1px #fff solid;
+				font-size: 0.3rem;
+				text-align: center;
+				color: #fff;
+			}
+			.popUp textarea {
+				display: block;
+				height: 6rem;
+				width: 6rem;
+				margin: 0 auto;
+				border: 1px #f60 solid;
+			}
+			.popUp .finish {
+				display: block;
+				outline: none;
+				border: none;
+				height: 0.8rem;
+				width: 4rem;
+				margin: 0 auto;
+				margin-top: 1rem;
+				background: #f60;
+				color: #fff;
+				border-radius: 5px;
+				font-size: 0.3rem;
+			}
 		</style>
 	</head>
 	<body>
-		<header>提交订单</header>
 		<div class="receivingInformationCon">
 			<img src="../img/addressBg.png"/>
 			<ul class="receivingInformation">
@@ -148,6 +273,35 @@
 			</ul>
 			<img src="../img/addressBg.png"/>
 		</div>
+		<!-- 礼盒总价 -->
+		<div class="giftBoxPrice">
+			<img src="../img/shopping.jpeg"/>
+			<div class="gitBoxDetail">
+				<h1>精美的礼盒大礼包</h1>
+				<h2>16个</h2>
+			</div>
+			<div class="totalPrice">
+				&yen;<b>60.00</b>
+			</div>
+		</div>
+		<!-- 书信编辑按钮 -->
+		<div class="writtenMessage">
+			<img src="../img/writtenMessage.png"/>
+			<div class="general">
+				<p>请编辑您的书信...</p>
+			</div>
+			<div class="editCon">
+				<button class="editBtn">编辑</button>
+				<button style="display: none;" class="rejiggerBtn">更改</button>
+			</div>
+		</div>
+		
+		
+		<div class="popUp">
+			<h1>书信编辑</h1>
+			<textarea id="messageVal" name="" rows="" cols=""></textarea>
+			<button class="finish" id="finish">完成</button>
+		</div>
 		<script src="../js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/iconfont.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
@@ -173,7 +327,17 @@
 					$("#noCheck").css("display","block");
 				}
 			})
-			
+			/* 打开编辑框 */
+			$(".editCon button").on("touchstart",function(){
+				$(".popUp").css("display","block");
+			});
+			/* 保存书信内容并关闭编辑框 */
+			$("#finish").on("touchstart",function(){
+				var messageCon = $("#messageVal").val();
+				localStorage.messageContent = messageCon;
+				$(".popUp").css("display","none");
+				$(".general").html(localStorage.messageContent)
+			});
 		</script>
 	</body>
 </html>
