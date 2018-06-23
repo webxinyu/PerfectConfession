@@ -1,4 +1,4 @@
-
+/* 底部选项卡切换 */
 $(".toIndex").on("touchstart",function(){		//首页
 	window.location.href = "index.html";
 })

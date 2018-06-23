@@ -23,6 +23,7 @@
 				width: 1rem;
 				top: 1rem;
 				right: 0.2rem;
+				z-index: 999;
 			}
 			article img {
 				width: 100%;
@@ -31,6 +32,7 @@
 			.commodityList {		/* 商品列表 */
 				padding: 0 7px;
 				background: #fff;
+				margin-bottom: 1rem;
 			}
 			.commodityList li {
 				height: 2rem;
@@ -78,27 +80,23 @@
 				position: absolute;
 				display: block;
 				font-weight: normal;
-				height: 0.4rem;
-				width: 0.4rem;
-				line-height: 0.4rem;
+				height: 0.54rem;
+				width: 0.6rem;
+				line-height: 0.54rem;
 				left: 50%;
-				margin-left: -0.2rem;
+				margin-left: -0.27rem;
 				top: 50%;
-				margin-top: -0.2rem;
+				margin-top: -0.27rem;
 				text-align: center;
-				border: 1px #ddd solid;
 				font-size: 0.5rem;
 				border-radius: 50%;
 			}
 			.commodityList li .addCommodity .con:nth-of-type(1)>span .iconfont {		/* 减号 */
-				font-size: 0.4rem;
+				font-size: 0.6rem;
 				color: #ddd;
 			}
-			.commodityList li .addCommodity .con:nth-of-type(3)>span {
-				border: 1px #f00 solid;
-			}
 			.commodityList li .addCommodity .con:nth-of-type(3)>span .iconfont {		/* 加号 */
-				font-size: 0.4rem;
+				font-size: 0.6rem;
 				color: #f00;
 			}
 			.commodityList li .addCommodity .con>i {				/* 单品数量 */
@@ -185,7 +183,7 @@
 			</div>
 		</article>
 		<ul class="commodityList">
-			<li>
+			<!--<li>
 				<span class="shopImg"><img src="../img/shopping.jpeg"/></span>
 				<div class="detalis">
 					<h1>奶油蛋糕</h1>
@@ -193,11 +191,11 @@
 				</div>
 				<div class="addCommodity">
 					<div class="con">
-						<span class="increase"><i class="iconfont icon-move"></i></span>
+						<span class="increase"><i class="iconfont icon-jian-xianxingyuankuang"></i></span>
 					</div>
 					<div class="con"><i class="unitQuantity">0</i></div>
 					<div class="con">
-						<span class="reduce"><i class="iconfont icon-add1"></i></span>
+						<span class="reduce"><i class="iconfont icon-jia-xianxingyuankuang"></i></span>
 					</div>
 				</div>
 			</li>
@@ -209,11 +207,11 @@
 				</div>
 				<div class="addCommodity">
 					<div class="con">
-						<span class="increase"><i class="iconfont icon-move"></i></span>
+						<span class="increase"><i class="iconfont icon-jian-xianxingyuankuang"></i></span>
 					</div>
 					<div class="con"><i class="unitQuantity">0</i></div>
 					<div class="con">
-						<span class="reduce"><i class="iconfont icon-add1"></i></span>
+						<span class="reduce"><i class="iconfont icon-jia-xianxingyuankuang"></i></span>
 					</div>
 				</div>
 			</li>
@@ -225,14 +223,14 @@
 				</div>
 				<div class="addCommodity">
 					<div class="con">
-						<span class="increase"><i class="iconfont icon-move"></i></span>
+						<span class="increase"><i class="iconfont icon-jian-xianxingyuankuang"></i></span>
 					</div>
 					<div class="con"><i class="unitQuantity">0</i></div>
 					<div class="con">
-						<span class="reduce"><i class="iconfont icon-add1"></i></span>
+						<span class="reduce"><i class="iconfont icon-jia-xianxingyuankuang"></i></span>
 					</div>
 				</div>
-			</li>
+			</li>-->
 		</ul>
 		<footer>
 			<div class="total">
@@ -247,6 +245,75 @@
 	<script src="../js/swiper.animate1.0.3.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
+		$.ajax({
+			type:"get",
+			url:"../data/shoppingList.json",
+			async:true,
+			success:function(data) {
+				console.log(data)
+				for (var i = 0;i < data.length;i++) {
+					$(".commodityList").append('<li>'+
+							'<span class="shopImg"><img src="'+ data[i].imgId +'"/></span>'+
+							'<div class="detalis">'+
+								'<h1>'+ data[i].shoppingTitle +'</h1>'+
+								'<h2>&yen;<b>'+ data[i].shoppingPrice +'</b></h2>'+
+							'</div>'+
+							'<div class="addCommodity">'+
+								'<div class="con">'+
+									'<span class="increase"><i class="iconfont icon-jian-xianxingyuankuang"></i></span>'+
+								'</div>'+
+								'<div class="con"><i class="unitQuantity">0</i></div>'+
+								'<div class="con">'+
+									'<span class="reduce"><i class="iconfont icon-jia-xianxingyuankuang"></i></span>'+
+								'</div>'+
+							'</div>'+
+						'</li>')
+				}
+				
+				var totalPrice = parseFloat($("#totalPrice").text());
+				  /* 点击减号 */
+				$(".increase").on("touchstart",function(){
+				 	var current = parseInt($(this).parent().next().find("i").text());	//单品数量
+				 	current--;
+				 	if (current < 0) {		//单品数量小于0，跳出当前按钮事件
+				 		current = 0;
+				 		return false;
+				 	}
+				 	$(this).parent().next().find("i").text(current);
+				 	totalPrice -= parseFloat($(this).parent().parent().prev().find("h2").find("b").text());		//计算总价
+				 	if (totalPrice <= 0) {
+				 		totalPrice = 0;
+				 	}
+				 	$("#totalPrice").text(totalPrice);
+				});
+				  /* 点击加号 */
+				$(".reduce").on("touchstart",function(){
+				 	var current = parseFloat($(this).parent().prev().find("i").text());	//单品数量
+				 	current++;
+				 	$(this).parent().prev().find("i").text(current);
+				 	totalPrice += parseFloat($(this).parent().parent().prev().find("h2").find("b").text());		//计算总价
+				 	$("#totalPrice").text(totalPrice);
+				 	$("#bagsAni").addClass("ani bounceIn animated");
+				 	var timer = null;
+				 	clearTimeout(timer);
+				 	timer = setTimeout(function(){
+				 		$("#bagsAni").removeClass("ani bounceIn animated");
+				 		clearTimeout(timer);
+				 	},500);
+				});
+				$("#toFirmOrder").on("touchstart",function(){
+					var sumShop = 0;
+					for (var j = 0;j < data.length;j++) {
+						sumShop += parseInt($(".unitQuantity").eq(j).text());
+					}
+					window.location.href = "firmOrder.html?totalPrice="+totalPrice+"&sumShop="+sumShop+"&id=" + 1;
+				})
+				
+			},
+			error:function(){
+				console.log("error");
+			}
+		});
      	var mySwiper = new Swiper ('.swiper-container', {
 		    on:{
 		      init: function(){
@@ -258,39 +325,6 @@
 		      } 
 		    }
 		})
-	  	var totalPrice = parseFloat($("#totalPrice").text());
-		  /* 点击减号 */
-		$(".increase").on("touchstart",function(){
-		 	var current = parseInt($(this).parent().next().find("i").text());	//单品数量
-		 	current--;
-		 	if (current < 0) {		//单品数量小于0，跳出当前按钮事件
-		 		current = 0;
-		 		return false;
-		 	}
-		 	$(this).parent().next().find("i").text(current);
-		 	totalPrice -= parseFloat($(this).parent().parent().prev().find("h2").find("b").text());		//计算总价
-		 	if (totalPrice <= 0) {
-		 		totalPrice = 0;
-		 	}
-		 	$("#totalPrice").text(totalPrice);
-		});
-		  /* 点击加号 */
-		$(".reduce").on("touchstart",function(){
-		 	var current = parseFloat($(this).parent().prev().find("i").text());	//单品数量
-		 	current++;
-		 	$(this).parent().prev().find("i").text(current);
-		 	totalPrice += parseFloat($(this).parent().parent().prev().find("h2").find("b").text());		//计算总价
-		 	$("#totalPrice").text(totalPrice);
-		 	$("#bagsAni").addClass("ani bounceIn animated");
-		 	var timer = null;
-		 	clearTimeout(timer);
-		 	timer = setTimeout(function(){
-		 		$("#bagsAni").removeClass("ani bounceIn animated");
-		 		clearTimeout(timer);
-		 	},500);
-		});
-		$("#toFirmOrder").on("touchstart",function(){
-			window.location.href = "firmOrder.html?totalPrice="+totalPrice+"&id=" + 1;
-		})
+	  	
 	</script>
 </html>

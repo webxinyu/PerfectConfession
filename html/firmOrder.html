@@ -167,8 +167,8 @@
 				height: 1rem;
 				line-height: 1rem;
 				width: 2.6rem;
-				color: #ccc;
-				font-size: 0.2rem;
+				color: #aaa;
+				font-size: 0.3rem;
 			}
 			.editCon {
 				float: right;
@@ -187,7 +187,7 @@
 				height: 0.6rem;
 				background: #f60;
 				color: #fff;
-				font-size: 0.3rem;
+				font-size: 0.26rem;
 				border-radius: 5px;
 				box-shadow: 0px 0px 5px #999;
 			}
@@ -278,10 +278,10 @@
 			<img src="../img/shopping.jpeg"/>
 			<div class="gitBoxDetail">
 				<h1>精美的礼盒大礼包</h1>
-				<h2>16个</h2>
+				<h2><b id="totalShop">00</b>个</h2>
 			</div>
 			<div class="totalPrice">
-				&yen;<b>60.00</b>
+				&yen;<b id="totalPriceNum">00.00</b>
 			</div>
 		</div>
 		<!-- 书信编辑按钮 -->
@@ -306,18 +306,8 @@
 		<script src="../js/iconfont.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			function GetRequest() {   
-			   var url = location.search; //获取url中"?"符后的字串   
-			   var theRequest = new Object();   
-			   if (url.indexOf("?") != -1) {   
-			      var str = url.substr(1);   
-			      strs = str.split("&");   
-			      for(var i = 0; i < strs.length; i ++) {   
-			         theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);   
-			      }   
-			   }   
-			   return theRequest;   
-			} 
+			$("#totalShop").text(GetRequest().sumShop);			//总个数
+			$("#totalPriceNum").text(GetRequest().totalPrice);	//总价钱
 			$("#saveAddress").on("click",function(){
 				if ($("#saveAddress")[0].checked == true) {
 					$("#hasCheck").css("display","block");
@@ -338,6 +328,24 @@
 				$(".popUp").css("display","none");
 				$(".general").html(localStorage.messageContent)
 			});
+			
+			
+			
+			
+			
+			/*************** 获取url参数方法 ***************/
+			function GetRequest() {   
+			   var url = location.search; //获取url中"?"符后的字串   
+			   var theRequest = new Object();   
+			   if (url.indexOf("?") != -1) {   
+			      var str = url.substr(1);   
+			      strs = str.split("&");   
+			      for(var i = 0; i < strs.length; i ++) {   
+			         theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);   
+			      }   
+			   }   
+			   return theRequest;   
+			}
 		</script>
 	</body>
 </html>
