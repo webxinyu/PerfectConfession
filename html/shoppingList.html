@@ -314,6 +314,44 @@
 				console.log("error");
 			}
 		});
+		var totalPrice = parseFloat($("#totalPrice").text());
+				  /* 点击减号 */
+				$(".increase").on("touchstart",function(){
+				 	var current = parseInt($(this).parent().next().find("i").text());	//单品数量
+				 	current--;
+				 	if (current < 0) {		//单品数量小于0，跳出当前按钮事件
+				 		current = 0;
+				 		return false;
+				 	}
+				 	$(this).parent().next().find("i").text(current);
+				 	totalPrice -= parseFloat($(this).parent().parent().prev().find("h2").find("b").text());		//计算总价
+				 	if (totalPrice <= 0) {
+				 		totalPrice = 0;
+				 	}
+				 	$("#totalPrice").text(totalPrice);
+				});
+				  /* 点击加号 */
+				$(".reduce").on("touchstart",function(){
+				 	var current = parseFloat($(this).parent().prev().find("i").text());	//单品数量
+				 	current++;
+				 	$(this).parent().prev().find("i").text(current);
+				 	totalPrice += parseFloat($(this).parent().parent().prev().find("h2").find("b").text());		//计算总价
+				 	$("#totalPrice").text(totalPrice);
+				 	$("#bagsAni").addClass("ani bounceIn animated");
+				 	var timer = null;
+				 	clearTimeout(timer);
+				 	timer = setTimeout(function(){
+				 		$("#bagsAni").removeClass("ani bounceIn animated");
+				 		clearTimeout(timer);
+				 	},500);
+				});
+				$("#toFirmOrder").on("touchstart",function(){
+					var sumShop = 0;
+					for (var j = 0;j < data.length;j++) {
+						sumShop += parseInt($(".unitQuantity").eq(j).text());
+					}
+					window.location.href = "firmOrder.html?totalPrice="+totalPrice+"&sumShop="+sumShop+"&id=" + 1;
+				})
      	var mySwiper = new Swiper ('.swiper-container', {
 		    on:{
 		      init: function(){
