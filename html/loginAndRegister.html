@@ -15,9 +15,12 @@
 				height: 1rem;
 				line-height: 1rem;
 				text-align: right;
-				padding: 0 10px;
+				padding: 0 0.6rem;
 				font-size: 0.5rem;
 				color: #666;
+			}
+			article .iconfont {
+				font-size: 0.5rem;
 			}
 			header {
 				height: 2rem;
@@ -25,11 +28,15 @@
 				line-height: 2rem;
 				font-size: 0.8rem;
 			}
+			header img {
+				width: 1.6rem;
+				height: 1.6rem;
+			}
 			section {
 				background: #fff;
 			}
 			.loginAndRegister {
-				padding: 0px 7px;
+				padding: 0px 0.6rem;
 			}
 			.login {
 				height: 4rem;
@@ -84,12 +91,99 @@
 				font-size: 0.35rem;
 				text-decoration: none;
 			}
+			footer {			/* 第三方登录 */
+				padding: 0 0.6rem;
+			}
+			.transition {
+				height: 1rem;
+				display: flex;
+			}
+			.transition li {
+				position: relative;
+				flex: 1;
+			}
+			.transition li:nth-of-type(1) span {
+				display: block;
+				height: 1px;
+				background: #ccc;
+				position: absolute;
+				top: 50%;
+				width: 100%;
+			}
+			.transition li:nth-of-type(2) span {
+				height: 1rem;
+				line-height: 1rem;
+				display: block;
+				width: 100%;
+				text-align: center;
+				font-size: 0.24rem;
+				color: #666;
+			}
+			.transition li:nth-of-type(3) span {
+				display: block;
+				height: 1px;
+				background: #ccc;
+				position: absolute;
+				top: 50%;
+				width: 100%;
+			}
+			.wxLogin {
+				display: flex;
+				height: 0.8rem;
+				width: 5rem;
+				margin: 0 auto;
+				border: 1px #ccc solid;
+				border-radius: 0.5rem;
+				background: #fff;
+				font-size: 0.35rem;
+			}
+			.wxLogin span {
+				flex: 1;
+				line-height: 0.8rem;
+				text-align: center;
+			}
+			.wxLogin span .iconfont {
+				font-size: 0.6rem;
+				color: #da251c;
+			}
+			.wxLogin p {
+				flex: 2;
+				line-height: 0.8rem;
+				font-size: 0.3rem;
+				color: #333;
+			}
+			.qqLogin {
+				display: flex;
+				height: 0.8rem;
+				width: 5rem;
+				margin: 0 auto;
+				border: 1px #ccc solid;
+				border-radius: 0.5rem;
+				background: #fff;
+				font-size: 0.35rem;
+				margin-top: 0.4rem;
+			}
+			.qqLogin span {
+				flex: 1;
+				line-height: 0.8rem;
+				text-align: center;
+			}
+			.qqLogin span .iconfont {
+				font-size: 0.6rem;
+				color: #00b4ff;
+			}
+			.qqLogin p {
+				flex: 2;
+				line-height: 0.8rem;
+				font-size: 0.3rem;
+				color: #333;
+			}
 		</style>
 	</head>
 	<body>
 		<article><i class="iconfont icon-close"></i></article>
 		<header>
-			孚点网
+			<img src="../img/logo.png"/>
 		</header>
 		<section>
 			<div class="loginAndRegister">
@@ -144,11 +238,11 @@
 				</li>
 			</ul>
 			<div class="wxLogin">
-				<span></span>
+				<span><i class="iconfont icon-weibo"></i></span>
 				<p>微信账号登录</p>
 			</div>
 			<div class="qqLogin">
-				<span></span>
+				<span><i class="iconfont icon-wangfill"></i></span>
 				<p>QQ账号登录</p>
 			</div>
 		</footer>
