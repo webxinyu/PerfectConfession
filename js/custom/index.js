@@ -5,15 +5,6 @@ var mySwiper = new Swiper('.swiper-container', {
     	el: '.swiper-pagination',
   	},
 })
-var mySwiper02 = new Swiper('.swiper-container02',{
-	autoplay: {
-	    delay: 5000,//1秒切换一次
-	},
-	slidesPerView : 3,
-	spaceBetween : 20,
-	loop : true,
-	//spaceBetween : '10%',按container的百分比
-})
 $("#openBagsListBtn").on("touchstart",function(){
 	$(this).css("background","#d65e0e");
 });

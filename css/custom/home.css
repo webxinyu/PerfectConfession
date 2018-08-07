@@ -34,7 +34,7 @@ section {
 .personalInforation {		/* 个人信息及订单详情 */
 	height: 2rem;
 }
-.isLogin {
+.isLogin {				/* 已登录 */
 	height: 2rem;
 	overflow: hidden;
 }
@@ -47,10 +47,12 @@ section {
 	display: block;
 	width: 1.6rem;
 	height: 1.6rem;
+	line-height: 1.6rem;
 	margin: 0.2rem;
 	border: 1px #ddd solid;
 	border-radius: 50%;
 	box-shadow: 0 0 8px #8C8C8C;
+	text-align: center;
 	overflow: hidden;
 }
 .headSculpture>span>img {
@@ -73,6 +75,19 @@ section {
 	line-height: 0.6rem;
 	font-size: 0.3rem;
 	font-weight: normal;
+}
+.nickname h1 {
+	height: 1.4rem;
+	line-height: 1.4rem;
+	font-size: 0.4rem;
+}
+.noLogin {			/* 未登录 */
+	height: 2rem;
+	overflow: hidden;
+}
+.headSculpture>span .iconfont {
+	font-size: 1rem;
+	color: #f60;
 }
 .orderStatus {		/* 订单状态 */
 	height: 2rem;

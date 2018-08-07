@@ -23,9 +23,8 @@
 				font-size: 0.5rem;
 			}
 			header {
-				height: 2rem;
+				height: 1.6rem;
 				text-align: center;
-				line-height: 2rem;
 				font-size: 0.8rem;
 			}
 			header img {
@@ -44,28 +43,27 @@
 			.inputDiv {
 				height: 3rem;
 			}
-			.inputDiv ul li {
+			.inputDiv ul li {				
+				position: relative;	
 				height: 0.8rem;
-				border-bottom: 1px #ccc solid;
-				position: relative;			
-			}
-			.inputDiv ul li:nth-of-type(2) {
-				margin-top: 0.2rem;
+				border-bottom: 1px #ccc solid;		
 			}
 			.inputDiv ul li input {
+				display: block;
 				height: 0.6rem;
 				width: 100%;
 				border: none;
+				outline: none;
 				position: absolute;
 				top: 0;
 				left: 0;
-				font-size: 0.26rem;
+				font-size: 0.26rem;				
 			}
 			.inputDiv p {
 				overflow: hidden;
 				height: 0.8rem;
 			}
-			.inputDiv p span {
+			.inputDiv p>span {
 				float: left;
 				height: 0.8rem;
 				line-height: 0.8rem;
@@ -182,10 +180,59 @@
 				font-size: 0.3rem;
 				color: #333;
 			}
+			.register {				/*注册*/
+				
+			}
+			.register {
+				height: 4rem;
+			}
+			.register .inputDiv ul li:nth-of-type(2) {
+				overflow: hidden;
+			}
+			.register .inputDiv ul li:nth-of-type(2)>input {
+				float: left;
+				width: 3rem;
+			}
+			.register .inputDiv ul li:nth-of-type(2)>span {
+				float: right;
+				padding: 0 5px;
+				height: 0.4rem;
+				line-height: 0.4rem;
+				text-align: right;
+				font-size: 0.2rem;
+				background: #f60;
+				color: #fff;
+				margin-top: 0.13rem;
+				border-radius: 0.2rem;
+			}
+			.registerBtn {
+				display: block;
+				height: 0.8rem;
+				line-height: 0.8rem;
+				width: 5rem;
+				margin: 0 auto;
+				border-radius: 0.5rem;
+				color: #fff;
+				text-align: center;
+				font-size: 0.35rem;
+				text-decoration: none;
+				background: #f60;
+			}
+			.register .inputDiv .toLogin {
+				height: 0.6rem;
+				line-height: 0.6rem;
+				font-size: 0.24rem;
+				width: 2.4rem;
+				padding: 0;
+				text-align: left;
+			}
+			.register .inputDiv .toLogin>span {
+				color: #f60;
+			}
 		</style>
 	</head>
 	<body>
-		<article><i class="iconfont icon-close"></i></article>
+		<article><i id="backHome" class="iconfont icon-close"></i></article>
 		<header>
 			<img src="../img/logo.png"/>
 		</header>
@@ -202,7 +249,7 @@
 							</li>
 						</ul>
 						<p>
-							<span>立即注册</span>
+							<span id="blockedOutToRegister">立即注册</span>
 							<a href="javascript:void(0);">忘记密码？</a>
 						</p>
 					</div>
@@ -224,8 +271,9 @@
 								<input type="text" name="setPassword" id="setPassword" value="" placeholder="请输入密码" />
 							</li>
 						</ul>
-						<p>立即注册</p>
+						<article class="toLogin">已有账号？<span id="blockedOutToLogin">立即登录</span></article>
 					</div>
+					<p class="registerBtn">立即注册</p>
 				</div>
 			</div>
 		</section>
@@ -255,7 +303,19 @@
 		<script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../fudian/fudian.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			
+			$("#blockedOutToLogin").on("click",function(){	//切换到登录
+				$(".login").css("display","block");
+				$(".register").css("display","none");
+			});
+			$("#blockedOutToRegister").on("click",function(){	//切换到注册
+				console.log("aa");
+				$(".login").css("display","none");
+				$(".register").css("display","block");
+			});
+			//返回账户中心
+			$("#backHome").on("click",function(){
+				window.location.href = '../home.html';
+			});
 		</script>
 	</body>
 </html>

@@ -4,6 +4,13 @@ header {		/* 头部 */
 	background: #fff;
 	width: 100%;
 }
+footer ul li:nth-of-type(1) i.iconfont {		/* 当前窗口底部颜色 */
+	font-size: 0.35rem;
+	color: #FF6600;
+}
+footer ul li:nth-of-type(1) b {
+	color: #FF6600;
+}
 .swiper-container {		/* banner */
 	height: 100%;
 	overflow: hidden;
@@ -15,58 +22,221 @@ header {		/* 头部 */
 .swiper-pagination-bullet-active {
 	background: #ff6600;
 }
-.makingGiftBags {		/* 制作礼包按钮及精选礼包推荐 */
-	background: #fff;
-	padding: 0 7px;
+.makingGiftBags {		/* 首页 */
+	background: #f5f5f5;
 	overflow: hidden;
 }
-.makingGiftBags>h2 {		/* 精选推荐 */
-	font-size: 0.26rem;
+.FourClassify {			/* 四大分类 */
+	height: 1rem;
+	display: flex;
+	padding: 0.2rem 0;
+	margin: 0.2rem 0;
+	background: #fff;
+}
+.FourClassify li {
+	flex: 1;
+	text-align: center;
+}
+.FourClassify li h1 {
+	height: 0.6rem;
+	position: relative;
+}
+.FourClassify li h1 .iconfont {
+	font-size: 0.4rem;
+	color: #f60;
+	position: absolute;
+	top: 50%;
+	margin-top: -0.2rem;
+	left: 50%;
+	margin-left: -0.2rem;
+}
+.FourClassify li h2 {
+	height: 0.4rem;
+	line-height: 0.4rem;
+	font-size: 0.2rem;
+	font-weight: normal;
+}
+.FineRecommendation {		/* 精品推荐 */
+	overflow: hidden;
+	height: 4rem;
+}
+.FineLeft {			/* 左侧 */
+	float: left;
+	width: 3rem;
+	text-align: center;
+	background: #fff;
+}
+.FineLeft>h1 {
 	height: 0.6rem;
 	line-height: 0.6rem;
-	text-indent: 1em;
-}
-.makingGiftBags h3 {		/* 说明文字 */
-	height: 0.3rem;
-	line-height: 0.3rem;
-	font-size: 0.22rem;
+	font-size: 0.3rem;
 	font-weight: normal;
-}
-.makingGiftBags h4 {		/* 说明文字 */
-	height: 0.2rem;
-	line-height: 0.2rem;
-	font-size: 0.16rem;
-	font-weight: normal;
-	color: #333;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
-.makingGiftBags>h1 {		/* 开始制作礼包按钮 */
-	height: 2rem;
-	position: relative;
+.FineLeft>h2 {
+	height: 0.6rem;
+	font-size: 0.2rem;
+	color: #666;
+	font-weight: normal;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
-.makingGiftBags>h1>a {
-	display: inline-block;
+.FineLeft .FineLeftImg {
+	height: 2.8rem;
+}
+.FineLeft .FineLeftImg>img {
+	width: 2.6rem;
+	height: 2.6rem;
+}
+.FineRight {			/* 右侧 */
+	float: right;
+	background: #fff;
+	width: 3.3rem;
+}
+.FineRight li {
+	height: 2rem;
+	overflow: hidden;
+}
+.FineRight li .FineRightImg {
+	float: left;
+	width: 1.4rem;
+}
+.FineRight li .FineRightImg>img {
+	height: 1.8rem;
+	width: 1.4rem;
+}
+.FineRight li .FineRighTitle {
+	float: right;
+	width: 1.9rem;
+}
+.FineRight li .FineRighTitle h1 {
 	height: 0.6rem;
 	line-height: 0.6rem;
-	text-align: center;
-	width: 3rem;
+	font-size: 0.28rem;
+	font-weight: normal;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin-top: 0.4rem;
+}
+.FineRight li .FineRighTitle h2 {
+	height: 0.6rem;
+	font-size: 0.22rem;
+	color: #666;
+	font-weight: normal;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.commodityClassification {		/* 商品分类 */
+	margin-bottom: 60px;
+}
+.classifyList {				/* 分类列表 */
+	margin-top: 0.4rem;
+}
+.classifyList>h1 {
+	height: 1rem;
+	margin: 0 auto;
+	width: 5rem;
+	border-radius: 0.5rem;
+	background: #ccc;
+	margin-bottom: 0.4rem;
+}
+.classifyList>h1>span {
+	display: block;
+	height: 0.9rem;
+	margin: 0 auto;
+	width: 5rem;
+	line-height: 0.9rem;
+	border-radius: 0.5rem;
 	background: #FF6600;
 	color: #fff;
-	border: 1px #b54e09;
-	padding: 0;
-	font-size: 0.3rem;
+	font-size: 0.5rem;
+	text-align: center;
+	font-family: "楷体";
+	margin-bottom: 0.4rem;
+}
+.shopList {
+	background: #fff;
+	display: flex;
+    flex-wrap: wrap;
+}
+.shopList li {
+	display: inline-block;
+	width: 2rem;
+	margin-left: 0.1rem;
+	margin-top: 0.1rem;
+}
+.shopList li .shopImg {		/* 商品图片 */
+	width: 2rem;
+	height: 2rem;
+}
+.shopList li .shopImg>img {
+	width: 2rem;
+	height: 2rem;
+}
+.shopList li>h3 {			/* 商品描述 */
+	height: 0.6rem;
+	line-height: 0.3rem;
+	font-size: 0.22rem;
+	font-weight: normal;
+	color: #333;
+	overflow: hidden;
+    text-overflow:ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-top: 0.1rem;
+}
+.shopList li .priceAndAdd {
+	height: 0.6rem;
+	position: relative;
+}
+.shopList li .priceAndAdd>h4 {
+	height: 0.6rem;
+	line-height: 0.6rem;
+	width: 2rem;
+	font-size: 0.26rem;
+	color: #f00;
+	font-weight: normal;
+	overflow: hidden;
+}
+.shopList li .priceAndAdd>span {
 	position: absolute;
+	width: 0.4rem;
+	height: 0.6rem;
+	top: 0;
+	right: 0;
+	
+}
+.shopList li .priceAndAdd>span .iconfont {
+	position: absolute;
+	font-size: 0.4rem;
+	color: #f00;
 	top: 50%;
-	margin-top: -0.3rem;
-	left: 50%;
-	margin-left: -1.5rem;
+	margin-top: -0.2rem;
 }
-footer ul li:nth-of-type(1) i.iconfont {		/* 当前窗口底部颜色 */
-	font-size: 0.35rem;
-	color: #FF6600;
+.classifyList .moreShopping {			/* 更多商品 */
+	height: 0.6rem;
+	display: block;
+	text-align: center;
+	line-height: 0.6rem;
+	font-size: 0.3rem;
+	color: #333;
+	text-decoration: none;
+	background: #fff;
+	border-top: 1px #ccc solid;
 }
-footer ul li:nth-of-type(1) b {
-	color: #FF6600;
-}
+
+
+
+
+
+
+
+
+
+
