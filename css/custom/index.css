@@ -180,7 +180,7 @@ footer ul li:nth-of-type(1) b {
 }
 .shopList li>h3 {			/* 商品描述 */
 	height: 0.6rem;
-	line-height: 0.3rem;
+	line-height: 0.31rem;
 	font-size: 0.22rem;
 	font-weight: normal;
 	color: #333;
