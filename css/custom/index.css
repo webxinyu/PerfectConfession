@@ -184,7 +184,7 @@ footer ul li:nth-of-type(1) b {
 	font-size: 0.22rem;
 	font-weight: normal;
 	color: #333;
-	overflow: hidden;
+	overflow: hidden;				/* 多行文本溢出出现省略号 */
     text-overflow:ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -230,6 +230,151 @@ footer ul li:nth-of-type(1) b {
 	background: #fff;
 	border-top: 1px #ccc solid;
 }
+.footerPopUp {					/* 添加购物车弹窗 */
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 44px;
+	display: none;
+	background: rgba(0,0,0,0.6);
+	z-index: 999;
+}
+.popUpCon {
+	background: #fff;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+.shopInformation {
+	padding:0 0.2rem;
+}
+.shopInformation li:nth-of-type(1) {
+	border-bottom: 1px #eee solid;
+	position: relative;
+	height: 1rem;
+}
+.shopInformation li:nth-of-type(1) .shopInformationImg {			/* 商品图片 */
+	position: absolute;
+	left: 0;
+	top: -0.2rem;
+	width: 1rem;
+	height: 1rem;
+	border: 1px #ccc solid;
+}
+.shopInformation li:nth-of-type(1) .shopInformationImg>img {
+	width: 1rem;
+	height: 1rem;
+	display: block;
+	margin: 0;
+}
+.shopInformation li:nth-of-type(1) .shopInformationDetail {				/* 商品价格及说明 */
+	height: 1rem;
+	margin-left: 1.2rem;
+}
+.shopInformation li:nth-of-type(1) .shopInformationDetail>h4 {
+	height: 0.5rem;
+	line-height: 0.5rem;
+	font-weight: normal;
+	font-size: 0.26rem;
+}
+.shopInformation li:nth-of-type(1) .shopInformationDetail>h3 {
+	height: 0.4rem;
+	font-weight: normal;
+	font-size: 0.28rem;
+	color: #f00;
+}
+.shopInformation li:nth-of-type(1) .closeShopInf {				/* 关闭按钮 */
+	position: absolute;
+	display: block;
+	width: 0.4rem;
+	height: 0.4rem;
+	top: 0.1rem;
+	right: 0;
+}
+.shopInformation li:nth-of-type(1) .closeShopInf>.iconfont {
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 0.46rem;
+	color: #aaa;
+}
+.shopInformation li:nth-of-type(2) {
+	height: 0.8rem;
+	overflow: hidden;
+}
+.shopInformation li:nth-of-type(2) .ResidualQuantity {
+	float: left;
+	width: 3rem;
+}
+.shopInformation li:nth-of-type(2) .ResidualQuantity>h3 {
+	height: 0.3rem;
+	line-height: 0.3rem;
+	margin-top: 0.1rem;
+	font-weight: normal;
+	font-size: 0.28rem;
+}
+.shopInformation li:nth-of-type(2) .ResidualQuantity>h4 {
+	height: 0.3rem;
+	font-size: 0.2rem;
+	font-weight: normal;
+	color: #666;
+}
+.shopInformation li:nth-of-type(2) ul {
+	float: right;
+	padding-top: 0.1rem;
+	width: 1.8rem;
+	display: flex;
+}
+.shopInformation li:nth-of-type(2) ul li {
+	height: 0.6rem;
+	flex: 1;
+	border: 1px #999 solid;
+	position: relative;
+}
+.shopInformation li:nth-of-type(2) ul li:nth-of-type(2) {
+	border-left: none;
+	border-right: none;
+}
+.shopInformation li:nth-of-type(2) ul li>.iconfont {
+	font-size: 0.24rem;
+	position: absolute;
+	top: 50%;
+	margin-top: -0.12rem;
+	left: 50%;
+	margin-left: -0.12rem;
+}
+.shopInformation li:nth-of-type(2) ul li>span {
+	display: block;
+	width: 100%;
+	height: 0.6rem;
+	line-height: 0.6rem;
+	text-align: center;
+	font-size: 0.3rem;
+}
+.addCartOrBuy {					/* 加入购物车和立即购买按钮 */
+	height: 1rem;
+	width: 100%;
+	display: flex;
+}
+.addCartOrBuy a {
+	flex: 1;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	text-align: center;
+	color: #fff;
+	font-size: 0.3rem;
+	font-weight: normal;
+	text-decoration: none;
+}
+.addCartOrBuy a:nth-of-type(1) {
+	background: #666;
+}
+.addCartOrBuy a:nth-of-type(2) {
+	background: #DA251C;
+}
+
 
 
 

@@ -55,14 +55,28 @@
 				float: left;
 			}
 			.commodityList li .detalis h1 {
-				height: 1rem;
-				line-height: 1rem;
-				font-size: 0.3rem;
+				height: 0.6rem;
+				line-height: 0.31rem;
+				font-size: 0.25rem;
+				font-weight: normal;
+				overflow: hidden;
+				text-overflow:ellipsis;
+			    display: -webkit-box;
+			    -webkit-line-clamp: 2;
+			    -webkit-box-orient: vertical;
 			}
 			.commodityList li .detalis h2 {
 				height: 0.6rem;
 				line-height: 0.6rem;
-				font-size: 0.25rem;
+				font-size: 0.28rem;
+				font-weight: normal;
+				color: #f00;
+			}
+			.commodityList li .detalis h3 {
+				height: 0.4rem;
+				font-size: 0.2rem;
+				font-weight: normal;
+				color: #666;
 			}
 			.commodityList li .addCommodity {		/* 选择商品 */
 				width: 2rem;
@@ -183,11 +197,12 @@
 			</div>
 		</article>
 		<ul class="commodityList">
-			<!--<li>
+			<li>
 				<span class="shopImg"><img src="../img/shopping.jpeg"/></span>
 				<div class="detalis">
-					<h1>奶油蛋糕</h1>
+					<h1>美味可口的奶油蛋糕，现做蛋糕，让您吃的放心，吃的开心</h1>
 					<h2>&yen;<b>5.00</b></h2>
+					<h3>剩余<span class="surplus">6</span>件</h3>
 				</div>
 				<div class="addCommodity">
 					<div class="con">
@@ -202,8 +217,9 @@
 			<li>
 				<span class="shopImg"><img src="../img/shopping.jpeg"/></span>
 				<div class="detalis">
-					<h1>奶油蛋糕</h1>
+					<h1>美味可口的奶油蛋糕。</h1>
 					<h2>&yen;<b>20.00</b></h2>
+					<h3>剩余<span class="surplus">6</span>件</h3>
 				</div>
 				<div class="addCommodity">
 					<div class="con">
@@ -218,8 +234,9 @@
 			<li>
 				<span class="shopImg"><img src="../img/shopping.jpeg"/></span>
 				<div class="detalis">
-					<h1>奶油蛋糕</h1>
+					<h1>美味可口的奶油蛋糕，现做蛋糕。</h1>
 					<h2>&yen;<b>10.00</b></h2>
+					<h3>剩余<span class="surplus">6</span>件</h3>
 				</div>
 				<div class="addCommodity">
 					<div class="con">
@@ -230,7 +247,7 @@
 						<span class="reduce"><i class="iconfont icon-jia-xianxingyuankuang"></i></span>
 					</div>
 				</div>
-			</li>-->
+			</li>
 		</ul>
 		<footer>
 			<div class="total">
@@ -245,32 +262,8 @@
 	<script src="../js/swiper.animate1.0.3.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-		$.ajax({
-			type:"get",
-			url:"../data/shoppingList.json",
-			async:true,
-			success:function(data) {
-				console.log(data)
-				for (var i = 0;i < data.length;i++) {
-					$(".commodityList").append('<li>'+
-							'<span class="shopImg"><img src="'+ data[i].imgId +'"/></span>'+
-							'<div class="detalis">'+
-								'<h1>'+ data[i].shoppingTitle +'</h1>'+
-								'<h2>&yen;<b>'+ data[i].shoppingPrice +'</b></h2>'+
-							'</div>'+
-							'<div class="addCommodity">'+
-								'<div class="con">'+
-									'<span class="increase"><i class="iconfont icon-jian-xianxingyuankuang"></i></span>'+
-								'</div>'+
-								'<div class="con"><i class="unitQuantity">0</i></div>'+
-								'<div class="con">'+
-									'<span class="reduce"><i class="iconfont icon-jia-xianxingyuankuang"></i></span>'+
-								'</div>'+
-							'</div>'+
-						'</li>')
-				}
-				
-				var totalPrice = parseFloat($("#totalPrice").text());
+
+		var totalPrice = parseFloat($("#totalPrice").text());
 				  /* 点击减号 */
 				$(".increase").on("touchstart",function(){
 				 	var current = parseInt($(this).parent().next().find("i").text());	//单品数量
@@ -289,7 +282,12 @@
 				  /* 点击加号 */
 				$(".reduce").on("touchstart",function(){
 				 	var current = parseFloat($(this).parent().prev().find("i").text());	//单品数量
+				 	var surplusNum =  parseInt($(this).parent().parent().parent().find(".surplus").text());		//剩余商品数量
 				 	current++;
+				 	if (current > surplusNum) {		//超出剩余商品储量，跳出当前按钮事件
+				 		current = surplusNum;
+				 		return false;
+				 	}
 				 	$(this).parent().prev().find("i").text(current);
 				 	totalPrice += parseFloat($(this).parent().parent().prev().find("h2").find("b").text());		//计算总价
 				 	$("#totalPrice").text(totalPrice);
@@ -308,13 +306,6 @@
 					}
 					window.location.href = "firmOrder.html?totalPrice="+totalPrice+"&sumShop="+sumShop+"&id=" + 1;
 				})
-				
-			},
-			error:function(){
-				console.log("error");
-			}
-		});
-
      	var mySwiper = new Swiper ('.swiper-container', {
 		    on:{
 		      init: function(){
