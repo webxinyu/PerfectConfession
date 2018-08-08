@@ -254,7 +254,7 @@
 				<h1>合计：<span>&yen;</span><b id="totalPrice">0.00</b></h1>
 				<h2>礼品盒：<b> 2</b>元 &nbsp;&nbsp;规格：<i>小 </i></h2>
 			</div>
-			<p><a id="toFirmOrder" href="javascript:;">去结算</a></p>
+			<p><a id="toFirmOrder">去结算</a></p>
 		</footer>
 	</body>
 	<script src="../js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
@@ -301,7 +301,7 @@
 				});
 				$("#toFirmOrder").on("touchstart",function(){
 					var sumShop = 0;
-					for (var j = 0;j < data.length;j++) {
+					for (var j = 0;j < $(".commodityList li").length;j++) {
 						sumShop += parseInt($(".unitQuantity").eq(j).text());
 					}
 					window.location.href = "firmOrder.html?totalPrice="+totalPrice+"&sumShop="+sumShop+"&id=" + 1;
