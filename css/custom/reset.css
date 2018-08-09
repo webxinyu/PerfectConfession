@@ -21,6 +21,7 @@ time, mark, audio, video {
 }
 body {
 	background: #f5f5f5;
+	font-family: "微软雅黑";
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 

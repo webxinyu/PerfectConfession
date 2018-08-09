@@ -62,3 +62,6 @@ function buttonColorCan(btnDom){		//按钮颜色变量
 	$("#"+btnDom).css("border","1px #999 solid");
 	$("#"+btnDom).find(".iconfont").css("color","#999");
 }
+$(".FineLeft").on("click",function(){
+	window.location.href = 'html/commodityDetails.html'
+})

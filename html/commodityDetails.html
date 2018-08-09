@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta charset="UTF-8">
+		<title>商品详情</title>
+		<link rel="stylesheet" type="text/css" href="../css/custom/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/swiper-4.2.6.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/animate.min.css"/>
+		<style type="text/css">
+			header {		/* 头部 */
+				height: 6.4rem;
+				overflow: hidden;
+				background: #fff;
+				width: 100%;
+			}
+			.swiper-container {		/* banner */
+				height: 100%;
+				overflow: hidden;
+			}
+			.swiper-slide img {
+				width: 100%;
+				height: 100%;
+			}
+			.swiper-pagination-bullet-active {
+				background: #ff6600;
+			}
+			.typePage {				/* 版心 */
+				width: 100%;
+				overflow: hidden;
+			}
+			.summary {			/* 商品简介及运费信息 */
+				padding: 0 0.2rem;
+				background: #fff;
+				margin-bottom: 0.2rem;
+			}
+			.summary li {
+				border-bottom: 1px #eee solid;
+			}
+			.summary li:last-of-type {
+				border-bottom: none;
+			}
+			.summary li:nth-of-type(1) h2 {
+				height: 0.6rem;
+				line-height: 0.6rem;
+				font-weight: normal;
+				font-size: 0.28rem;
+			}
+			.summary li:nth-of-type(1) h1 {
+				height: 0.4rem;
+				line-height: 0.4rem;
+				font-weight: normal;
+				font-size: 0.26rem;
+				color: #f00;
+			}
+			.summary li:nth-of-type(1) h1>span {
+				font-size: 0.32rem;
+				font-family: "微软雅黑";
+			}
+			.summary li:nth-of-type(2) {
+				height: 0.6rem;
+				display: flex;
+			}
+			.summary li:nth-of-type(2) h4 {
+				flex: 1;
+				height: 0.6rem;
+				line-height: 0.6rem;
+				margin-right: 0.6rem;
+				font-weight: normal;
+				font-size: 0.2rem;
+				color: #999;
+			}
+			.summary li:nth-of-type(3) {
+				overflow: hidden;
+				padding: 0.1rem 0;
+			}
+			.summary li:nth-of-type(3) span{
+				float: left;
+				font-size: 0.2rem;
+				padding: 0.01rem 0.1rem;
+				border: 1px #fff solid;
+			}
+			.summary li:nth-of-type(3) span:nth-of-type(1),
+			.summary li:nth-of-type(3) span:nth-of-type(2) {
+				padding: 0.01rem 0.1rem;
+				border: 1px #f00 solid;
+				color: #f00;
+				margin-right: 0.2rem;
+				border-radius: 0.04rem;
+			}
+			.distributionMode {					/* 配送方式 */
+				height: 0.6rem;
+				line-height: 0.6rem;
+				background: #fff;
+				padding: 0 0.2rem;
+				font-size: 0.26rem;
+				margin-bottom: 0.2rem;
+			}
+			.locationShop {			/* 当前定位门店及安全联盟信息 */
+				padding: 0 0.2rem;
+				background: #fff;
+			}
+			.locationShop li:nth-of-type(1) {		/* 当前定位门店 */
+				padding: 0.2rem 0;
+				overflow: hidden;
+			}
+			.locationShop li:nth-of-type(1) .shopLogo {
+				float: left;
+				width: 1rem;
+				height: 1rem;
+			}
+			.locationShop li:nth-of-type(1) .shopLogo img {
+				display: block;
+				height: 100%;
+				width: 100%;
+			}
+			.locationShop li:nth-of-type(1) .shopInformation {
+				float: left;
+				height: 1rem;
+				width: 4rem;
+				margin-left: 0.2rem;
+			}
+			.locationShop li:nth-of-type(1) .shopInformation h4 {
+				height: 0.6rem;
+				line-height: 0.6rem;
+				font-size: 0.26rem;
+				font-weight: normal;
+			}
+			.locationShop li:nth-of-type(1) .shopInformation h5 {
+				height: 0.4rem;
+				font-size: 0.2rem;
+				font-weight: normal;
+				color: #666;
+			}
+			.locationShop li:nth-of-type(1) .openDetail {
+				height: 1rem;
+				float: right;
+				position: relative;
+			}
+			.locationShop li:nth-of-type(1) .openDetail .iconfont {
+				position: absolute;
+				font-size: 0.4rem;
+				top: 50%;
+				margin-top: -0.2rem;
+				right: 0;
+				color: #ccc;
+			}
+			.locationShop li:nth-of-type(2) {			/* 其他店铺 */
+				height: 0.6rem;
+				overflow: hidden;
+				border-top:1px #eee solid;
+				border-bottom:1px #eee solid;
+			}
+			.locationShop li:nth-of-type(2) p {
+				float: left;
+				width: 2rem;
+				font-size: 0.26rem;
+				height: 0.6rem;
+				line-height: 0.6rem;
+			}
+			.locationShop li:nth-of-type(2) .openDetail {
+				height: 0.6rem;
+				float: right;
+				position: relative;
+			}
+			.locationShop li:nth-of-type(2) .openDetail .iconfont {
+				position: absolute;
+				font-size: 0.4rem;
+				top: 50%;
+				margin-top: -0.2rem;
+				right: 0;
+				color: #ccc;
+			}
+			.locationShop li:nth-of-type(3) {				/* 安全联盟 */
+				
+			}
+			.locationShop li:nth-of-type(3) h3 {
+				height: 0.4rem;
+				line-height: 0.4rem;
+				font-size: 0.26rem;
+				font-weight: normal;
+			}
+			.locationShop li:nth-of-type(3) h4 {
+				height: 0.6rem;
+				overflow: hidden;
+				font-weight: normal;
+			}
+			.locationShop li:nth-of-type(3) h4 span {
+				float: left;
+				height: 0.6rem;
+				line-height: 0.6rem;
+				position: relative;
+				font-size: 0.2rem;
+				color: #333;
+				margin-right: 0.2rem;
+			}
+			.locationShop li:nth-of-type(3) h4 span .iconfont {
+				font-size: 0.26rem;
+				margin-right: 0.05rem;
+			}
+			.detailsAndRecord {				/* 图文详情和成交记录 */
+				background: #fff;
+				margin-top: 0.2rem;
+			}
+			.detailsAndrecordTab {
+				height: 0.8rem;
+				display: flex;
+				border-bottom: 1px #eee solid;
+			}
+			.detailsAndrecordTab>span {
+				flex: 1;
+				text-align: center;
+				position: relative;
+			}
+			.detailsAndrecordTab span a {
+				text-decoration: none;
+				position: absolute;
+				color: #333;
+				font-size: 0.26rem;
+				height: 0.75rem;
+				line-height: 0.75rem;
+				display: block;
+				border-bottom: 0.05rem #fff solid;
+				width: 1.2rem;
+				text-align: center;
+				top: 0;
+				left: 50%;
+				margin-left: -0.6rem;
+			}
+			.detailsAndrecordTab span:first-of-type a {
+				border-bottom: 0.05rem #f00 solid;
+				color: #f00;
+			}
+			.detailsCon {
+				
+			}
+			.detailsCon img {
+				width: 100%;
+			}
+			.recordCon {				/* 成交记录 */
+				width: 100%;
+				display: none;
+			}
+			.recordCon tr {
+				height: 0.6rem;
+				border-bottom: 1px #eee solid;
+			}
+			.recordCon tr th {
+				font-size: 0.2rem;
+				text-align: center;
+				background: #eee;
+				font-weight: normal;
+			}
+			.recordCon tr td {
+				font-size: 0.2rem;
+				text-align: center;
+				color: #666;
+			}
+			.addCartAndBuy {			/* 加入购物车和立即购买 */
+				position: fixed;
+				width: 100%;
+				height: 0.8rem;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				display: flex;
+				background: #fff;
+				border-top: 1px  #ddd solid;
+			}
+			.addCartAndBuy>h1 {
+				flex: 1;
+				font-weight: normal;
+			}
+			.addCartAndBuy>h1 span {
+				display: block;
+			}
+			.addCartAndBuy>h1 span:nth-of-type(1) {
+				height: 0.5rem;
+				position: relative;
+			}
+			.addCartAndBuy>h1 span:nth-of-type(1) .iconfont {
+				position: absolute;
+				font-size: 0.4rem;
+				color: #f00;
+				top: 50%;
+				margin-top: -0.2rem;
+				left: 50%;
+				margin-left: -0.2rem;
+			}
+			.addCartAndBuy>h1:nth-of-type(2) span:nth-of-type(1) .iconfont {
+				color: #333;
+			}
+			.addCartAndBuy>h1 span:nth-of-type(2) {
+				height: 0.3rem;
+				line-height: 0.3rem;
+				position: relative;
+				font-size: 0.2rem;
+				text-align: center;
+			}
+			.addCartAndBuy>h2 {
+				flex: 3;
+				font-weight: normal;
+				font-size: 0.26rem;
+				text-align: center;
+				line-height: 0.8rem;
+			}
+			.addCartAndBuy>h2:nth-of-type(1) {
+				background: #666;
+			}
+			.addCartAndBuy>h2:nth-of-type(2) {
+				background: #DA251C;
+			}
+			.addCartAndBuy>h2>a {
+				text-decoration: none;
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="swiper-container">
+			  <div class="swiper-wrapper">
+			    <div class="swiper-slide"><img src="../img/commodityDetail01.png"/></div>
+			    <div class="swiper-slide"><img src="../img/commodityDetail02.png"/></div>
+			  </div>
+			  <div class="swiper-pagination"></div>
+			</div>
+		</header>
+		<section class="typePage">
+			<ul class="summary">
+				<li>
+					<h2>云南芒果 美味多汁 180ml</h2>
+					<h1>&yen;<span>3.80</span></h1>
+				</li>
+				<li>
+					<h4>运费：<span>免运费</span></h4>
+					<h4>销量：<span>66</span></h4>
+				</li>
+				<li>
+					<span>满减</span>
+					<span>包邮</span>
+					<span>满<b>15</b>元，包邮</span>
+				</li>
+			</ul>
+			<!-- 配送方式 -->
+			<div class="distributionMode">
+				配送方式：<span>同城送</span>
+			</div>
+			<!-- 当前定位商店 -->
+			<ul class="locationShop">
+				<li id="toLocationShop">
+					<div class="shopLogo">
+						<img src="../img/logo.png"/>
+					</div>
+					<div class="shopInformation">
+						<h4>应天公园店</h4>
+						<h5>睢阳区宋城路666号</h5>
+					</div>
+					<div class="openDetail">
+						<i class="iconfont icon-right"></i>
+					</div>
+				</li>
+				<li id="toMoreShop">
+					<p>其他分店</p>
+					<div class="openDetail">
+						<i class="iconfont icon-right"></i>
+					</div>
+				</li>
+				<li id="openSoft">
+					<h3>安全联盟</h3>
+					<h4>
+						<span>
+							<i class="iconfont icon-roundcheck"></i>企业认证
+						</span>
+						<span>
+							<i class="iconfont icon-roundcheck"></i>店铺认证
+						</span>
+						<span>
+							<i class="iconfont icon-roundcheck"></i>担保交易
+						</span>
+						<span>
+							<i class="iconfont icon-roundcheck"></i>线下门店
+						</span>
+					</h4>
+				</li>
+			</ul>
+			<div class="detailsAndRecord">
+				<div class="detailsAndrecordTab">
+					<span id="openDetails">
+						<a>图文详情</a>
+					</span>
+					<span id="openRecord">
+						<a>成交记录</a>
+					</span>
+				</div>
+				<!-- 图文详情 -->
+				<div class="detailsCon">
+					<img src="../img/details.png"/>
+				</div>
+				<!-- 成交记录 -->
+				<table class="recordCon" border="0" cellspacing="" cellpadding="">
+					<tr>
+						<th>买家</th>
+						<th>成交时间</th>
+						<th>数量</th>
+					</tr>
+					<tr>
+						<td>毛*楠</td>
+						<td>08-09 17:06:30</td>
+						<td>6</td>
+					</tr>
+					<tr>
+						<td>毛*楠</td>
+						<td>08-09 17:06:30</td>
+						<td>10</td>
+					</tr>
+					<tr>
+						<td>毛*楠</td>
+						<td>08-09 17:06:30</td>
+						<td>8</td>
+					</tr>
+					<tr>
+						<td>毛*楠</td>
+						<td>08-09 17:06:30</td>
+						<td>3</td>
+					</tr>
+				</table>
+			</div>
+		</section>
+		<div class="addCartAndBuy">
+			<h1>
+				<span><i class="iconfont icon-servicefill"></i></span>
+				<span>客服</span>
+			</h1>
+			<h1>
+				<span><i class="iconfont icon-cart"></i></span>
+				<span>购物车</span>
+			</h1>
+			<h2><a href="javascript:void(0);">加入购物车</a></h2>
+			<h2><a href="javascript:void(0);">立即购买</a></h2>
+		</div>
+		<script src="../js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/swiper-4.2.6.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/swiper.animate1.0.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var mySwiper = new Swiper('.swiper-container', {
+				autoplay: true,//可选选项，自动滑动
+				loop : true,
+				pagination: {
+			    	el: '.swiper-pagination',
+			  	},
+			});
+			/* tab切换 */
+			$("#openDetails").on("click",function(){		//图文详情
+				$(".detailsCon").css("display","block");
+				$(".recordCon").css("display","none");
+				$(this).find("a").css({"border-bottom":"0.05rem #f00 solid","color":"#f00"});
+				$("#openRecord").find("a").css({"border-bottom":"0.05rem #fff solid","color":"#333"});
+			})
+			$("#openRecord").on("click",function(){		//成交详情
+				$(".detailsCon").css("display","none");
+				$(".recordCon").css("display","table");
+				$(this).find("a").css({"border-bottom":"0.05rem #f00 solid","color":"#f00"});
+				$("#openDetails").find("a").css({"border-bottom":"0.05rem #fff solid","color":"#333"});
+			})
+		</script>
+	</body>
+</html>
