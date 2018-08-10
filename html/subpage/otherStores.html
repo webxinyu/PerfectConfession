@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta charset="UTF-8">
+		<title>选择门店</title>
+		<link rel="stylesheet" type="text/css" href="../../css/custom/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/swiper-4.2.6.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/animate.min.css"/>
+		<style type="text/css">
+			header {
+				height: 2.4rem;
+			}
+			header .logo {
+				height: 1rem;
+				margin: 0.3rem 0;
+				text-align: center;
+			}
+			header .logo>img {
+				width: 1rem;
+				height: 1rem;
+				border-radius: 50%;
+				display: inline-block;
+			}
+			header h2 {
+				height: 0.8rem;
+				line-height: 0.8rem;
+				text-align: center;
+				font-size: 0.26rem;
+				font-weight: normal;
+			}
+			.selectStore {		/* 检索方式 */
+				height: 1rem;
+				background: #fff;
+				border-top: 1px #eee solid;
+				border-bottom: 1px #eee solid;
+				padding: 0 0.2rem;
+				display: flex;
+			}
+			.selectStore h4 {
+				flex: 1;
+				font-size: 0.24rem;
+				font-weight: normal;
+				color: #C0C0C0;
+				height: 1rem;
+				line-height: 1rem;
+			}
+			.selectStore .storeSearch {
+				flex: 1;
+				display: flex;
+			}
+			.selectStore .storeSearch span {
+				font-size: 0.24rem;
+				color: #666;
+				text-align: center;
+				height: 0.95rem;
+				line-height: 1rem;
+			}
+			.selectStore .storeSearch span:nth-of-type(1) {
+				flex: 1;
+				border-bottom: 0.05rem #f00 solid;
+				color: #f00;
+			}
+			.selectStore .storeSearch span:nth-of-type(2) {
+				flex: 2;
+				position: relative;
+			}
+			.selectStore .storeSearch span:nth-of-type(2) b {
+				width: 1px;
+				height: 0.24rem;
+				background: #8C8C8C;
+				position: absolute;
+				top: 50%;
+				margin-top: -0.12rem;
+			}
+			.selectStore .storeSearch span:nth-of-type(2) b:nth-of-type(1) {
+				left: 0;
+			}
+			.selectStore .storeSearch span:nth-of-type(2) b:nth-of-type(2) {
+				right: 0;
+			}
+			.selectStore .storeSearch span:nth-of-type(3) {
+				flex: 1;
+			}
+			.selectStore .storeSearch span:nth-of-type(3) .iconfont {
+				font-size: 0.35rem;
+				color: #666;
+			}
+			.defaultStore {				/* 默认排序列表 */
+				background: #fff;
+				padding: 0 0.2rem;
+			}
+			.defaultStore li {
+				display: flex;
+				height: 1.4rem;
+			}
+			.leftInformation {
+				flex: 10;
+			}
+			.leftInformation .storeName {
+				height: 0.8rem;
+				line-height: 0.8rem;
+				font-size: 0.26rem;
+			}
+			.leftInformation .storeName .iconfont {
+				font-size: 0.3rem;
+				color: #333;
+			}
+			.leftInformation h5 {
+				font-weight: normal;
+				font-size: 0.2rem;
+				color: #666;
+				height: 0.6rem;
+			}
+			.openThisStore {
+				flex: 1;
+				height: 1.4rem;
+				text-align: right;
+				position: relative;
+			}
+			.openThisStore .iconfont {
+				color: #8C8C8C;
+				position: absolute;
+				font-size: 0.4rem;
+				right: 0;
+				top: 50%;
+				margin-top: -0.2rem;
+			}
+			.distributionAddress {
+				height: 1rem;
+				line-height: 1rem;
+				font-size: 0.24rem;
+				padding: 0 0.2rem;
+				background: #fff;
+				border-bottom: 1px #eee solid;
+			}
+			.distributionAddress .iconfont {
+				margin-left: 0.2rem;
+			}
+			.nearbyStoreCon {				/* 附近的商店 */
+				display: none;
+			}
+			.nearbyStore {
+				background: #fff;
+				padding: 0 0.2rem;
+			}
+			.nearbyStore li {
+				display: flex;
+				height: 1.4rem;
+			}
+			.leftInformation {
+				flex: 10;
+				position: relative;
+			}
+			.leftInformation .storeName {
+				height: 0.8rem;
+				line-height: 0.8rem;
+				font-size: 0.26rem;
+			}
+			.leftInformation .storeName .iconfont {
+				font-size: 0.3rem;
+				color: #666;
+			}
+			.leftInformation h5 {
+				font-weight: normal;
+				font-size: 0.2rem;
+				color: #666;
+				height: 0.6rem;
+			}
+			.openThisStore {
+				flex: 1;
+				height: 1.4rem;
+				text-align: right;
+				position: relative;
+			}
+			.openThisStore .iconfont {
+				color: #8C8C8C;
+				position: absolute;
+				font-size: 0.4rem;
+				right: 0;
+				top: 50%;
+				margin-top: -0.2rem;
+			}
+			.leftInformation .distance {
+				position: absolute;
+				top: 0.2rem;
+				right: 0;
+				font-size: 0.2rem;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="logo"><img src="../../img/logo.png"/></div>
+			<h2>孚点便利店</h2>
+		</header>
+		<div class="selectStore">
+			<h4>请选择您要进入的门店：</h4>
+			<div class="storeSearch">
+				<span id="openDefaultStore">默认</span>
+				<span id="openNearbyStoreCon">
+					我附近的店
+					<b></b>
+					<b></b>
+				</span>
+				<span><i class="iconfont icon-search"></i></span>
+			</div>
+		</div>
+		<!-- 默认排序 -->
+		<ul class="defaultStore">
+			<li>
+				<div class="leftInformation">
+					<div class="storeName">
+						<i class="iconfont icon-dianpu"></i>
+						<span>应天公园店</span>
+					</div>
+					<h5>河南省 商丘市 开发区 宋城路与豫苑路交叉口</h5>
+				</div>
+				<div class="openThisStore">
+					<i class="iconfont icon-right"></i>
+				</div>
+			</li>
+			<li>
+				<div class="leftInformation">
+					<div class="storeName">
+						<i class="iconfont icon-dianpu"></i>
+						<span>大学城店</span>
+					</div>
+					<h5>河南省 商丘市 开发区 宋城路与豫苑路交叉口</h5>
+				</div>
+				<div class="openThisStore">
+					<i class="iconfont icon-right"></i>
+				</div>
+			</li>
+			<li>
+				<div class="leftInformation">
+					<div class="storeName">
+						<i class="iconfont icon-dianpu"></i>
+						<span>文化路店</span>
+					</div>
+					<h5>河南省 商丘市 开发区 文化路与神火大道交叉口</h5>
+				</div>
+				<div class="openThisStore">
+					<i class="iconfont icon-right"></i>
+				</div>
+			</li>
+		</ul>
+		<!-- 附近的商店 -->
+		<div class="nearbyStoreCon">
+			<div class="distributionAddress ">
+				配送至：<span>闵行区虹桥万科中心</span><i class="iconfont icon-triangledownfill"></i>
+			</div>
+			<ul class="nearbyStore">
+				<li>
+					<div class="leftInformation">
+						<div class="storeName">
+							<i class="iconfont icon-dianpu"></i>
+							<span>应天公园店</span>
+						</div>
+						<h5>河南省 商丘市 开发区 宋城路与豫苑路交叉口</h5>
+						<span class="distance">1.52km</span>
+					</div>
+					<div class="openThisStore">
+						<i class="iconfont icon-right"></i>
+					</div>
+				</li>
+				<li>
+					<div class="leftInformation">
+						<div class="storeName">
+							<i class="iconfont icon-dianpu"></i>
+							<span>大学城店</span>
+						</div>
+						<h5>河南省 商丘市 开发区 宋城路与豫苑路交叉口</h5>
+						<span class="distance">2.21km</span>
+					</div>
+					<div class="openThisStore">
+						<i class="iconfont icon-right"></i>
+					</div>
+				</li>
+				<li>
+					<div class="leftInformation">
+						<div class="storeName">
+							<i class="iconfont icon-dianpu"></i>
+							<span>文化路店</span>
+						</div>
+						<h5>河南省 商丘市 开发区 文化路与神火大道交叉口</h5>
+						<span class="distance">2.27km</span>
+					</div>
+					<div class="openThisStore">
+						<i class="iconfont icon-right"></i>
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		<script src="../../js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/swiper-4.2.6.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/swiper.animate1.0.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/rem.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			/* 获取时间戳 */
+			var timestampNum = new Date();
+			timestampNum = timestampNum.getTime();
+			/*生成随机字符串*/			
+			var nonceStrNum = randomString(32);
+			wx.config({
+			    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+			    appId: 'wx12c639f5fc8f1720', // 必填，公众号的唯一标识
+			    timestamp: 1533888492, // 必填，生成签名的时间戳
+			    nonceStr: 'Km7Ea6wwwx3jTZ4XH4GDnECSkSTYSkcM', // 必填，生成签名的随机串
+			    signature: '9bf0ad8222bfe4bc69afd7a110425dc78b0d39cf',// 必填，签名
+			    jsApiList: ["getLocation"] // 必填，需要使用的JS接口列表
+			});
+			wx.checkJsApi({
+			    jsApiList: ['getLocation'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+			    success: function(res) {
+			    // 以键值对的形式返回，可用的api值true，不可用为false
+			    // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+			    alert(res.checkResult.chooseImage);
+			    }
+			});
+			
+			wx.ready(function(){
+			    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+				wx.getLocation({
+					type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+					success: function (res) {
+						var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+						var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+						var speed = res.speed; // 速度，以米/每秒计
+						var accuracy = res.accuracy; // 位置精度
+						alert(latitude);
+					}
+				});
+			});
+			wx.error(function(res){
+			    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+			    alert(res)
+			});
+
+			function randomString(len) {
+			　　len = len || 32;
+			　　var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+			　　var maxPos = $chars.length;
+			　　var pwd = '';
+			　　for (i = 0; i < len; i++) {
+			　　　　pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+			　　}
+			　　return pwd;
+			}
+		</script>
+		<script type="text/javascript">
+			$("#openDefaultStore").on("click",function(){		//打开默认排序列表
+				$(this).css({"border-bottom":"0.05rem #f00 solid","color":"#f00"});
+				$(".nearbyStoreCon").css("display","none");
+				$(".defaultStore").css("display","block");
+				$("#openNearbyStoreCon").css({"border-bottom":"0.05rem #fff solid","color":"#666"});
+			})
+			$("#openNearbyStoreCon").on("click",function(){		//打开搜索附近列表
+				$(this).css({"border-bottom":"0.05rem #f00 solid","color":"#f00"});
+				$(".defaultStore").css("display","none");
+				$(".nearbyStoreCon").css("display","block");
+				$("#openDefaultStore").css({"border-bottom":"0.05rem #fff solid","color":"#666"});
+			})
+		</script>
+	</body>
+</html>

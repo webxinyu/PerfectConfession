@@ -465,6 +465,14 @@
 				$(this).find("a").css({"border-bottom":"0.05rem #f00 solid","color":"#f00"});
 				$("#openDetails").find("a").css({"border-bottom":"0.05rem #fff solid","color":"#333"});
 			})
+			/* 当前定位店铺 */
+			$(".shopInformation").on("click",function(){
+				window.location.href = '../index.html';
+			})
+			/* 其他分店 */
+			$("#toMoreShop").on("click",function(){
+				window.location.href = 'subpage/otherStores.html';
+			})
 		</script>
 	</body>
 </html>
