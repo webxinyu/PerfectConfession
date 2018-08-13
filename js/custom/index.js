@@ -16,10 +16,11 @@ $("#openBagsListBtn").on("touchstart",function(){
 	window.location.href = "html/shoppingList.html";
 });
 /* 点击添加按钮 */
-$(".addShoppingCart").on("click",function(){
+$(".addShoppingCart").on("click",function(event){	
 	var imgSrc = $(this).parent().parent().find(".shopImg").find("img")[0].src;		//当前添加商品的图片路径
 	$(".footerPopUp").css("display","block");
 	$("#shoppingImg")[0].src = imgSrc;
+	event.stopPropagation();
 	
 });
 /* 关闭添加购物车弹窗 */
