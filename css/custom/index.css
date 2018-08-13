@@ -50,6 +50,18 @@ footer ul li:nth-of-type(1) b {
 	left: 50%;
 	margin-left: -0.2rem;
 }
+.FourClassify li:nth-of-type(1) h1 .iconfont {
+	color: #f60;
+}
+.FourClassify li:nth-of-type(2) h1 .iconfont {
+	color: #2AC845;
+}
+.FourClassify li:nth-of-type(3) h1 .iconfont {
+	color: #007AFF;
+}
+.FourClassify li:nth-of-type(4) h1 .iconfont {
+	color: #DD524D;
+}
 .FourClassify li h2 {
 	height: 0.4rem;
 	line-height: 0.4rem;

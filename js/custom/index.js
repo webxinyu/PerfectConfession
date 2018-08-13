@@ -68,3 +68,17 @@ $(".FineLeft").on("click",function(){
 $(".shopList").on("click","li",function(){
 	window.location.href = 'html/commodityDetails.html';
 })
+
+/* 打开四大分类的详情页面 */
+$("#openStorePage").on("click",function(){		//商家信息
+	window.location.href = 'html/storePage.html';
+});
+$("#openEcologicalAgriculturePage").on("click",function(){		//生态农业
+	window.location.href = 'html/ecologicalAgriculturePage.html';
+});
+$("#openFreeDeliveryArea").on("click",function(){		//免费送货区
+	window.location.href = 'html/freeDeliveryArea.html';
+});
+$("#openIntegralPurchase").on("click",function(){		//积分购
+	window.location.href = 'html/integralPurchase.html';
+});

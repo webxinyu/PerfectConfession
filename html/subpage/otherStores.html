@@ -300,92 +300,19 @@
 		<script src="../../js/swiper-4.2.6.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/swiper.animate1.0.3.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/rem.js" type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript">
-			 wx.config({
-			      debug: false,
-			      appId: 'wx12c639f5fc8f1720',
-			      timestamp: 1533888492,
-			      nonceStr: 'jYRHb6R8O08XvW7d',
-			      signature: 'a1956385e53db9bbb06359776e6af51c3a2fc0e0',
-			      jsApiList: [
-			        'checkJsApi',
-			        'onMenuShareTimeline',
-			        'onMenuShareAppMessage',
-			        'onMenuShareQQ',
-			        'onMenuShareWeibo',
-			        'onMenuShareQZone',
-			        'hideMenuItems',
-			        'showMenuItems',
-			        'hideAllNonBaseMenuItem',
-			        'showAllNonBaseMenuItem',
-			        'translateVoice',
-			        'startRecord',
-			        'stopRecord',
-			        'onVoiceRecordEnd',
-			        'playVoice',
-			        'onVoicePlayEnd',
-			        'pauseVoice',
-			        'stopVoice',
-			        'uploadVoice',
-			        'downloadVoice',
-			        'chooseImage',
-			        'previewImage',
-			        'uploadImage',
-			        'downloadImage',
-			        'getNetworkType',
-			        'openLocation',
-			        'getLocation',
-			        'hideOptionMenu',
-			        'showOptionMenu',
-			        'closeWindow',
-			        'scanQRCode',
-			        'chooseWXPay',
-			        'openProductSpecificView',
-			        'addCard',
-			        'chooseCard',
-			        'openCard'
-			      ]
-			  });
-			 
-			
-			wx.ready(function(){
-			    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
-				wx.checkJsApi({
-			      jsApiList: [
-			        'getLocation',
-			        'previewImage'
-			      ],
-			      success: function (res) {
-			        alert(JSON.stringify(res));
-			      }
-			    });
-			    
-			    $("#openDefaultStore").on("click",function(){		//打开默认排序列表
-					$(this).css({"border-bottom":"0.05rem #f00 solid","color":"#f00"});
-					$(".nearbyStoreCon").css("display","none");
-					$(".defaultStore").css("display","block");
-					$("#openNearbyStoreCon").css({"border-bottom":"0.05rem #fff solid","color":"#666"});
-				})
-				$("#openNearbyStoreCon").on("click",function(){		//打开搜索附近列表
-					wx.getLocation({
-				      success: function (res) {
-				        alert(JSON.stringify(res));
-				      },
-				      cancel: function (res) {
-				        alert('用户拒绝授权获取地理位置');
-				      }
-				    });
-					$(this).css({"border-bottom":"0.05rem #f00 solid","color":"#f00"});
-					$(".defaultStore").css("display","none");
-					$(".nearbyStoreCon").css("display","block");
-					$("#openDefaultStore").css({"border-bottom":"0.05rem #fff solid","color":"#666"});
-				})
-			});
-			wx.error(function(res){
-			    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
-			    alert(JSON.stringify(res));
-			});
-			
+		<script type="text/javascript">			    
+		    $("#openDefaultStore").on("click",function(){		//打开默认排序列表
+				$(this).css({"border-bottom":"0.05rem #f00 solid","color":"#f00"});
+				$(".nearbyStoreCon").css("display","none");
+				$(".defaultStore").css("display","block");
+				$("#openNearbyStoreCon").css({"border-bottom":"0.05rem #fff solid","color":"#666"});
+			})
+			$("#openNearbyStoreCon").on("click",function(){		//打开搜索附近列表
+				$(this).css({"border-bottom":"0.05rem #f00 solid","color":"#f00"});
+				$(".defaultStore").css("display","none");
+				$(".nearbyStoreCon").css("display","block");
+				$("#openDefaultStore").css({"border-bottom":"0.05rem #fff solid","color":"#666"});
+			})			
 		</script>
 	</body>
 </html>

@@ -9,6 +9,14 @@
 		<link rel="stylesheet" type="text/css" href="../css/swiper-4.2.6.min.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/animate.min.css"/>
 		<style type="text/css">
+			@keyframes softAni{			/* 安全联盟详情展示动画 */
+				from {bottom: -8rem;}
+				to {bottom: 0;}
+			}
+			@keyframes softHideAni{			/* 安全联盟详情展示动画 */
+				from {bottom: 0;}
+				to {bottom: -8rem;}
+			}
 			header {		/* 头部 */
 				height: 6.4rem;
 				overflow: hidden;
@@ -315,6 +323,64 @@
 				text-decoration: none;
 				color: #fff;
 			}
+			.SoftPopUp {			/* 安全联盟 */
+				position: fixed;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				z-index: 9999;
+				background: rgba(0,0,0,0.6);
+				display: none;
+			}
+			.softCon {
+				background: #fff;
+				position: absolute;
+				width: 100%;
+				left: 0;
+				right: 0;
+				bottom: -7rem;
+				display: none;
+				animation: softHideAni 0.5s;
+			}
+			.softConShow {
+				bottom: 0;
+				animation: softAni 0.5s;
+			}
+			.softCon ul {
+				padding: 0.2rem 0.2rem 0;
+			}
+			.softCon ul li {
+				margin-bottom: 0.2rem;
+			}
+			.softCon ul li h5,
+			.softCon ul li h6 {
+				height: 0.3rem;
+				line-height: 0.3rem;
+				font-size: 0.2rem;
+				padding-left: 0.35rem;
+				position: relative;
+				font-weight: normal;
+			}
+			.softCon ul li h6 {
+				color: #666;
+			}
+			.softCon ul li h5 .iconfont {
+				font-size: 0.26rem;
+				position: absolute;
+				top: 50%;
+				margin-top: -0.15rem;
+				left: 0;
+				color: #4CD964;
+			}
+			.knowBtn {
+				height: 0.8rem;
+				line-height: 0.8rem;
+				text-align: center;
+				background: #FF5053;
+				color: #fff;
+				font-size: 0.26rem;
+			}
 		</style>
 	</head>
 	<body>
@@ -440,6 +506,30 @@
 			<h2><a href="javascript:void(0);">加入购物车</a></h2>
 			<h2><a href="javascript:void(0);">立即购买</a></h2>
 		</div>
+		<!-- 安全联盟详情 -->
+		<div class="SoftPopUp">
+			<div class="softCon">
+				<ul>
+					<li>
+						<h5><i class="iconfont icon-roundcheck"></i>企业认证</h5>
+						<h6>该店铺已通过企业认证</h6>
+					</li>
+					<li>
+						<h5><i class="iconfont icon-roundcheck"></i>店铺认证</h5>
+						<h6>该店铺已通过店铺认证</h6>
+					</li>
+					<li>
+						<h5><i class="iconfont icon-roundcheck"></i>担保交易模式</h5>
+						<h6>商家发货后7天或卖家确认收货后，支付金额结算到商家</h6>
+					</li>
+					<li>
+						<h5><i class="iconfont icon-roundcheck"></i>线下门店</h5>
+						<h6>该店铺拥有线下实体门店</h6>
+					</li>
+				</ul>
+				<div class="knowBtn">我知道了</div>
+			</div>
+		</div>
 		<script src="../js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/swiper-4.2.6.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/swiper.animate1.0.3.min.js" type="text/javascript" charset="utf-8"></script>
@@ -472,6 +562,18 @@
 			/* 其他分店 */
 			$("#toMoreShop").on("click",function(){
 				window.location.href = 'subpage/otherStores.html';
+			});
+			/* 安全联盟 */
+			$("#openSoft").on("click",function(){
+				$(".SoftPopUp").css("display","block");
+				$(".softCon").show().addClass("softConShow");
+			})
+			$(".knowBtn").on("click",function(){
+				$(".softCon").removeClass("softConShow");
+				setTimeout(function(){
+					$(".SoftPopUp").css("display","none");
+					$(".softCon").hide();
+				},500);				
 			})
 		</script>
 	</body>
