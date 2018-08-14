@@ -12,4 +12,8 @@ $(function(){
 	$(".sureBtn").on("touchend",function(){
 		$(this).css("background","#FF6600");
 	})
+	/* 立即预约按钮 */
+	$("#toOrder").on("click",function(){
+		window.location.href = 'html/orderPage.html';
+	})
 })
