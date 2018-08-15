@@ -15,5 +15,8 @@ $(function(){
 	/* 立即预约按钮 */
 	$("#toOrder").on("click",function(){
 		window.location.href = 'html/orderPage.html';
+	});
+	$(".wasteClassification").on("click","li",function(){
+		window.location.href = 'html/subpage/reclamationDetails.html';
 	})
 })
