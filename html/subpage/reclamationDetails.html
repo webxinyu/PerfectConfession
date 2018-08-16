@@ -3,25 +3,129 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 		<meta charset="UTF-8">
-		<title>选择门店</title>
+		<title>分类详情</title>
 		<link rel="stylesheet" type="text/css" href="../../css/custom/reset.css"/>
 		<link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
 		<link rel="stylesheet" type="text/css" href="../../css/swiper-4.2.6.min.css"/>
 		<link rel="stylesheet" type="text/css" href="../../css/animate.min.css"/>
 		<style type="text/css">
-			
+			header {
+				background: #fff;
+				height: 1rem;
+				line-height: 1rem;
+				text-align: center;
+				font-size: 0.3rem;
+				font-weight: normal;
+				color: #f60;
+				border-bottom: 2px #f60 solid;
+			}
+			.reference {
+				background: #fff;
+				font-size: 0.26rem;
+			}
+			.reference h1 {
+				height: 0.6rem;
+				line-height: 0.6rem;
+				padding: 0 0.2rem;
+				font-weight: normal;
+				font-size: 0.26rem;
+			}
+			.swiper-slide {
+				height: 1.6rem;
+				text-align: center;
+				line-height: 1.6rem;
+				background: #0062CC;
+			}
+			.swiper-slide img {
+				width: 100%;
+				height: 100%;
+			}
+			.referencePrice {
+				background: #fff;
+				padding-top: 0.4rem;
+			}
+			.referencePrice h1 {
+				height: 0.6rem;
+				line-height: 0.6rem;
+				padding: 0 0.2rem;
+				font-weight: normal;
+				font-size: 0.26rem;
+			}
+			.peice {
+				padding: 0 0.2rem;
+				line-height: 0.6rem;
+				font-size: 0.32rem;
+				color: #FF5053;
+			}
 		</style>
 	</head>
 	<body>
-		
-		
-		
+		<header id="titleName">废纸</header>
+		<!-- 参考物 -->
+		<div class="reference">
+			<h1>参考物品</h1>
+			<div class="swiper-container">
+			  <div class="swiper-wrapper">
+				<div class="swiper-slide"><img alt="孚点废品回收中心" src="../../img/reclamation/wastePaper01.png" ></div>
+				<div class="swiper-slide"><img alt="孚点废品回收中心" src="../../img/reclamation/wastePaper02.png" ></div>
+				<div class="swiper-slide"><img alt="孚点废品回收中心" src="../../img/reclamation/wastePaper03.png" ></div>
+				<div class="swiper-slide"><img alt="孚点废品回收中心" src="../../img/reclamation/wastePaper04.png" ></div>
+				<div class="swiper-slide"><img alt="孚点废品回收中心" src="../../img/reclamation/wastePaper05.png" ></div>
+				<div class="swiper-slide"><img alt="孚点废品回收中心" src="../../img/reclamation/wastePaper06.png" ></div>
+				<div class="swiper-slide"><img alt="孚点废品回收中心" src="../../img/reclamation/wastePaper07.png" ></div>
+				<div class="swiper-slide"><img alt="孚点废品回收中心" src="../../img/reclamation/wastePaper08.png" ></div>
+			  </div>
+			</div>
+		</div>
+		<div class="referencePrice">
+			<h1>参考价格</h1>
+			<div class="peice">
+				每吨/800元
+			</div>
+		</div>
 		<script src="../../js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/swiper-4.2.6.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/swiper.animate1.0.3.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/rem.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">			    
-		
+			var mySwiper = new Swiper('.swiper-container', {
+				autoplay: false,//可选选项，自动滑动,
+				slidesPerView : 4,
+				spaceBetween : 10,
+			});
+			var classifyName = GetRequest().classify;
+			if (classifyName == "1") {
+				$("#titleName").text("废纸");
+			}
+			if (classifyName == "2") {
+				$("#titleName").text("饮料瓶");
+			}
+			if (classifyName == "3") {
+				$("#titleName").text("金属");
+			}
+			if (classifyName == "4") {
+				$("#titleName").text("塑料");
+			}
+			if (classifyName == "5") {
+				$("#titleName").text("纺织物");
+			}
+			if (classifyName == "6") {
+				$("#titleName").text("玻璃");
+			}
+			
+			/* 获取url参数方法 */
+			function GetRequest() {   
+				var url = location.search; //获取url中"?"符后的字串   
+				var theRequest = new Object();   
+				if (url.indexOf("?") != -1) {   
+					var str = url.substr(1);   
+					strs = str.split("&");   
+					for(var i = 0; i < strs.length; i ++) {   
+						theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);   
+					}   
+				}   
+				return theRequest;   
+			}
 		</script>
 	</body>
 </html>
