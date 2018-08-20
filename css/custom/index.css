@@ -415,7 +415,28 @@ footer ul li:nth-of-type(1) b {
 	padding: 0 0.1rem;
 	border-radius: 0.15rem;
 }
-
+.tipsCon {			/* 消息弹窗 */
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 10000;
+	background: rgba(0,0,0,0);
+	text-align: center;
+	display: none;
+}
+.tipsContent {
+	display: inline-block;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	border-radius: 0.8rem;
+	min-width: 3rem;
+	font-size: 0.3rem;
+	background: rgba(0,0,0,0.8);
+	color: #fff;
+	margin-top: 80%;
+}
 
 
 

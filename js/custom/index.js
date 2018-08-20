@@ -1,7 +1,10 @@
-/* 页面进来创建购物车数组的本地存储 */
-var storageShopCart = [];
-localStorage.storageShopCart = JSON.stringify(storageShopCart);
-
+//判断购物车是否为空
+if (localStorage.storageShopCart) {
+	//首页购物车按钮数字变化
+	$("#totalCartShop").text(JSON.parse(localStorage.storageShopCart).length);
+} else{
+	$("#totalCartShop").text("0");
+}
 var mySwiper = new Swiper('.swiper-container', {
 	autoplay: true,//可选选项，自动滑动
 	loop : true,
@@ -102,8 +105,12 @@ $("#indexAddCart").on("click",function(){
 	var shopPrice = $("#nowShopPrice").text();
 	//获取商品的数量
 	var shopSum = $(".shopSum").text();
+	//商品标题
+	var shopTitle = $(".addCartShopTitle").text();
+	//商品图片名称
+	var shopImgName = shopId;
 	//当前商品信息
-	var shopArr = {"shopId":shopId,"shopPrice":shopPrice,"shopSum":shopSum}
+	var shopArr = {"shopId":shopId,"shopPrice":shopPrice,"shopSum":shopSum,"shopTitle":shopTitle,"shopImgName":shopImgName}
 	//判断本地存储的购物车列表中是否有当前选择的商品
 	for (var i = 0; i < storageShopCart.length; i++) {
 		if (storageShopCart[i].shopId == shopId) {
@@ -119,6 +126,16 @@ $("#indexAddCart").on("click",function(){
 		storageShopCart.push(shopArr);
 	}
 	localStorage.storageShopCart = JSON.stringify(storageShopCart);
+	//隐藏购物车弹窗
+	$(".footerPopUp").css("display","none");
+	$(".shopSum").text("1");
+	//显示成功消息窗
+	$(".tipsCon").css("display","block");
+	setTimeout(function () {
+		$(".tipsCon").css("display","none");
+	},2000);
+	//首页购物车按钮数字变化
+	$("#totalCartShop").text(JSON.parse(localStorage.storageShopCart).length);
 })
 
 
