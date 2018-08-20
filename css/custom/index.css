@@ -386,7 +386,35 @@ footer ul li:nth-of-type(1) b {
 .addCartOrBuy a:nth-of-type(2) {
 	background: #DA251C;
 }
-
+.lookShoppingCart {				/* 进入购物车浮窗 */
+	position: fixed;
+	bottom: 1.6rem;
+	right: 0.2rem;
+	height: 0.8rem;
+	line-height: 0.5rem;
+	width: 0.8rem;
+	border: 1px #f00 solid;
+	border-radius: 50%;
+	background: #f00;
+	text-align: center;
+}
+.lookShoppingCart .iconfont {
+	font-size: 0.6rem;
+	color: #fff;
+}
+.lookShoppingCart>span {
+	display: block;
+	position: absolute;
+	right: 0rem;
+	top: -0.1rem;
+	font-size: 0.26rem;
+	background: brown;
+	color: #fff;
+	height: 0.3rem;
+	line-height: 0.3rem;
+	padding: 0 0.1rem;
+	border-radius: 0.15rem;
+}
 
 
 

@@ -6,7 +6,7 @@
 		<title>登录注册</title>
 		<link rel="stylesheet" type="text/css" href="../css/custom/reset.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
-		<link rel="stylesheet" type="text/css" href="../fudian/fudian.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css"/>
 		<style type="text/css">
 			body {
 				background: #fff;
@@ -245,7 +245,7 @@
 								<input type="text" name="userName" id="userName" value="" placeholder="请输入账号" />
 							</li>
 							<li>
-								<input type="text" name="userPassword" id="userPassword" value="" placeholder="请输入密码" />
+								<input type="password" name="userPassword" id="userPassword" value="" placeholder="请输入密码" />
 							</li>
 						</ul>
 						<p>
@@ -300,8 +300,8 @@
 		</footer>
 		
 		<script src="../js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../fudian/fudian.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			$("#blockedOutToLogin").on("click",function(){	//切换到登录
 				$(".login").css("display","block");
@@ -316,6 +316,24 @@
 			$("#backHome").on("click",function(){
 				window.location.href = '../home.html';
 			});
+			/* 登录 */
+			$(".loginBtn").on("click",function(){
+				if ($("#userName").val() == "") {
+					mui.toast("用户名不能为空");
+					return false;
+				}
+				if ($("#userPassword").val() == "") {
+					mui.toast("请输入密码");
+					return false;
+				}
+				var userInformation = {"fdUserName":$("#userName").val(),"fdPassword":$("#userPassword").val()};
+				userInformationStr = JSON.stringify(userInformation);
+				localStorage.fdUserInformation = userInformationStr;
+				mui.toast("登录成功");
+				setTimeout(function(){
+					window.location.href = '../home.html';
+				},2000)
+			})
 		</script>
 	</body>
 </html>

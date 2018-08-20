@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta charset="UTF-8">
+		<title>购物车</title>
+		<link rel="stylesheet" type="text/css" href="../../css/custom/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/swiper-4.2.6.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/animate.min.css"/>
+		<style type="text/css">
+			header {
+				height: 1rem;
+				background: #fff;
+				border-bottom: 1px #ccc solid;
+				overflow: hidden;
+				padding: 0 0.2rem;
+			}
+			.storeName {
+				float: left;
+				overflow: hidden;
+				width: 4rem;
+			}
+			.selectThisStoreAll {
+				float: left;
+				width: 0.5rem;
+				height: 1rem;
+				position: relative;
+			}
+			.selectThisStoreAll .iconfont {
+				font-size: 0.4rem;
+				color: #f00;
+				position: absolute;
+				top: 50%;
+				margin-top: -0.2rem;
+			}
+			.selectNo {
+				display: none;
+			}
+			.storeInformation {
+				float: right;
+				width: 3.5rem;
+				height: 1rem;
+				line-height: 1rem;
+				font-size: 0.34rem;
+			}
+			.compileCart {
+				float: right;				
+			}
+			.compileCart span {
+				display: block;
+				height: 1rem;
+				line-height: 1rem;
+				width: 1rem;
+				text-align: center;
+				font-size: 0.34rem;
+			}	
+			.allList {			/* 商品列表 */
+				margin-top: 0.4rem;
+				border-top: 1px #ccc solid;
+				border-bottom: 1px #ccc solid;
+				background: #fff;
+				padding: 0 0.2rem;
+			}
+			.allList li {
+				height: 2rem;
+				border-bottom: 1px #eee solid;
+				clear: both;
+				position: relative;
+			}
+			.shopListSelect {			/* 左侧选择按钮 */
+				float: left;
+				height: 1.6rem;
+				margin: 0.2rem 0;
+				width: 0.5rem;
+				position: relative;
+			}	
+			.shopListSelect .iconfont {
+				font-size: 0.4rem;
+				color: #f00;
+				position: absolute;
+				top: 50%;
+				margin-top: -0.2rem;
+			}
+			.rightDetail {				/* 右侧信息详情 */
+				float: right;
+				width: 5.5rem;
+				overflow: hidden;
+				margin: 0.2rem 0;
+			}
+			.rightDetailImg {			/* 商品图片 */
+				float: left;
+				height: 1.6rem;
+				width: 1.6rem;
+			}
+			.rightDetailImg img {
+				height: 100%;
+				width: 100%;
+			}
+			.titleAndPrice {
+				float: right;
+				width: 3.7rem;
+			}
+			.titleAndPrice>h1 {
+				height: 1rem;
+				font-size: 0.24rem;
+				line-height: 0.5rem;
+				font-weight: normal;
+			}
+			.titleAndPrice .priceAndSum {
+				height: 0.6rem;
+				display: flex;
+			}
+			.titleAndPrice .priceAndSum>h3 {
+				height: 0.6rem;
+				line-height: 0.6rem;
+				font-size: 0.26rem;
+				color: #f00;
+				flex: 1;
+			}
+			.titleAndPrice .priceAndSum .quantity {
+				flex: 2;
+				height: 0.6rem;
+				overflow: hidden;
+			}
+			.titleAndPrice .priceAndSum .quantity span {
+				float: right;
+				height: 0.6rem;
+				line-height: 0.6rem;
+				width: 0.8rem;
+				font-size: 0.22rem;
+			}
+			.titleAndPrice .priceAndSum .quantity .addAndReduce {
+				float: right;
+				width: 1.2rem;
+				display: flex;
+			}
+			.titleAndPrice .priceAndSum .quantity .addAndReduce>span {
+				flex: 1;
+				text-align: center;
+				position: relative;
+				height: 0.6rem;
+			}
+			.titleAndPrice .priceAndSum .quantity .addAndReduce>span .iconfont {
+				position: absolute;
+				font-size: 0.4rem;
+				left: 50%;
+				margin-left: -0.2rem;
+				top: 0;
+			}
+			.titleAndPrice .priceAndSum .quantity .addAndReduce>span:nth-of-type(1) .iconfont {
+				color: #ddd;
+			}
+			.titleAndPrice .priceAndSum .quantity .addAndReduce>span:nth-of-type(3) .iconfont {
+				color: #f00;
+			}
+			.delThisShop {				/* 删除按钮的蒙层 */
+				position: absolute;
+				height: 2rem;
+				top: 0;
+				left: -0.2rem;
+				right: -0.2rem;
+				bottom: 0;
+				background: rgba(0,0,0,0.4);
+				display: none;
+			}
+			.delBtn {			/* 删除按钮 */
+				position: absolute;
+				height: 2rem;
+				line-height: 2rem;
+				text-align: center;
+				background: #f00;
+				width: 1rem;
+				color: #fff;
+				font-size: 0.3rem;
+				right: -1.2rem;
+				top: 0;
+				animation: delBtnHideAni 0.3s;
+			}
+			.delBtnShow {
+				right: 0;
+				animation: delBtnShowAni 0.3s;
+			}
+			@keyframes delBtnShowAni{		/* 删除按钮动画 */
+				from {right: -1.2rem;}
+				to {right: 0;}
+			}
+			@keyframes delBtnHideAni{		/* 删除按钮动画 */
+				from {right: 0;}
+				to {right: -1.2rem;}
+			}
+			footer {
+				height: 1.2rem;
+				position: fixed;
+				z-index: 9999;
+				display: flex;
+				background: #fff;
+				width: 100%;
+				left: 0;
+				right: 0;
+				bottom: 0;
+			}
+			footer .leftTotalPrice {
+				flex: 2;
+				margin-left: 0.2rem;
+			}
+			.shopTotalPrice {
+				height: 0.8rem;
+				line-height: 0.8rem;
+				font-size: 0.3rem;
+			}
+			.shopTotalPrice>h1 {
+				display: inline-block;
+				font-size: 0.3rem;
+				font-weight: normal;
+				color: #f00;
+			}
+			.distributionFee {
+				height: 0.4rem;
+				font-size: 0.22rem;
+				color: #666;
+			}
+			.distributionFee>h1 {
+				display: inline-block;
+				font-size: 0.22rem;
+				font-weight: normal;
+				color: #666;
+			}
+			footer .toSettle {
+				flex: 1;
+				background: #f00;
+				color: #fff;
+				font-size: 0.4rem;
+				text-align: center;
+				height: 1.2rem;
+				line-height: 1.2rem;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="storeName">
+				<div class="selectThisStoreAll">
+					<!-- 未选中 -->
+					<i class="iconfont icon-round selectNo"></i>
+					<!-- 选中 -->
+					<i class="iconfont icon-roundcheckfill selectHas"></i>
+				</div>
+				<!-- 商家名称 -->
+				<div class="storeInformation">
+					孚点便利店
+				</div>
+			</div>
+			<div class="compileCart">
+				<span id="compileBtn">编辑</span>
+				<span style="display: none;" id="compileSucBtn">完成</span>
+			</div>
+		</header>
+		<ul class="allList">
+			<li>
+				<div class="shopListSelect">
+					<!-- 未选中 -->
+					<i class="iconfont icon-round singleSelectNo"></i>
+					<!-- 选中 -->
+					<i class="iconfont icon-roundcheckfill singleSelectHas"></i>
+				</div>
+				<div class="rightDetail">
+					<div class="rightDetailImg">
+						<img src="../../img/nibbles05.png" >
+					</div>
+					<div class="titleAndPrice">
+						<h1>【买五送一】山核桃为香瓜子360g</h1>
+						<div class="priceAndSum">
+							<h3>&yen;<span>6.8</span>元</h3>
+							<div class="quantity">
+								<div class="addAndReduce">
+									<span class="reduce"><i class="iconfont icon-jian-xianxingyuankuang"></i></span>									
+									<span class="thisSum">1</span>
+									<span class="add"><i class="iconfont icon-jiahao"></i></span>
+								</div>
+								<span>数量：</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="delThisShop">
+					<span class="delBtn">删除</span>
+				</div>
+			</li>
+			<li>
+				<div class="shopListSelect">
+					<!-- 未选中 -->
+					<i class="iconfont icon-round singleSelectNo"></i>
+					<!-- 选中 -->
+					<i class="iconfont icon-roundcheckfill singleSelectHas"></i>
+				</div>
+				<div class="rightDetail">
+					<div class="rightDetailImg">
+						<img src="../../img/nibbles03.png" >
+					</div>
+					<div class="titleAndPrice">
+						<h1>【买五送一】山核桃为香瓜子360g</h1>
+						<div class="priceAndSum">
+							<h3>&yen;<span>6.8</span>元</h3>
+							<div class="quantity">
+								<div class="addAndReduce">
+									<span class="reduce"><i class="iconfont icon-jian-xianxingyuankuang"></i></span>									
+									<span class="thisSum">1</span>
+									<span class="add"><i class="iconfont icon-jiahao"></i></span>
+								</div>
+								<span>数量：</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="delThisShop">
+					<span class="delBtn">删除</span>
+				</div>
+			</li>
+		</ul>
+		<footer>
+			<div class="leftTotalPrice">
+				<div class="shopTotalPrice">
+					合计：<h1>&yen;<span id="priceNum">6.8</span>元</h1>
+				</div>
+				<div class="distributionFee">
+					配送费：<h1>&yen;<span id="distributionFeeNum">0</span>元</h1>
+				</div>
+			</div>
+			<div class="toSettle">
+				去结算
+			</div>
+		</footer>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/swiper-4.2.6.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/swiper.animate1.0.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/rem.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">			    
+			/* 选中所有和取消所有 */
+			$(".selectThisStoreAll").on("click",function(){
+				if ($(this).find(".selectNo")[0].style.display == "block") {		//如果未选中
+					$(".selectNo").css("display","none");
+					$(".selectHas").css("display","block");
+					$(".singleSelectNo").css("display","none");
+					$(".singleSelectHas").css("display","block");
+					
+				} else{			//如果选中
+					$(".selectNo").css("display","block");
+					$(".selectHas").css("display","none");
+					$(".singleSelectNo").css("display","block");
+					$(".singleSelectHas").css("display","none");
+				}
+			})
+			/* 单个商品的选中与取消 */
+			$(".singleSelectNo").on("click",function(){		//如果未选中
+				$(this).css("display","none");
+				$(this).parent().find(".singleSelectHas").css("display","block");
+			})
+			$(".singleSelectHas").on("click",function(){		//如果选中
+				$(this).css("display","none");
+				$(this).parent().find(".singleSelectNo").css("display","block");
+			})
+			/* 点击编辑按钮 */
+			$("#compileBtn").on("click",function(){
+				$(this).css("display","none");
+				$("#compileSucBtn").css("display","block");
+				$(".delThisShop").css("display","block");
+				$(".delBtn").addClass("delBtnShow");
+			});
+			/* 点击完成按钮 */
+			$("#compileSucBtn").on("click",function(){
+				$(this).css("display","none");
+				$("#compileBtn").css("display","block");
+				$(".delBtn").removeClass("delBtnShow");
+				setTimeout(function(){
+					$(".delThisShop").css("display","none");
+				},300)				
+			});
+			$(".delBtn").on("click",function(){			//删除按钮
+				$(this).parent().parent().css("display","none");
+			})
+		</script>
+	</body>
+</html>

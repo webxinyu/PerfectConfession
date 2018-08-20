@@ -83,3 +83,7 @@ $("#openFreeDeliveryArea").on("click",function(){		//免费送货区
 $("#openIntegralPurchase").on("click",function(){		//积分购
 	window.location.href = 'html/integralPurchase.html';
 });
+/* 进入购物车 */
+$(".lookShoppingCart").on("click",function(){
+	window.location.href = 'html/subpage/shopCartList.html'
+})
