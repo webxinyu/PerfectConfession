@@ -336,7 +336,42 @@
 		<script src="../../js/swiper-4.2.6.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/swiper.animate1.0.3.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/rem.js" type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript">			    
+		<script type="text/javascript">	
+			var data = JSON.parse(localStorage.storageShopCart);
+			var allListDom = "";
+			for (var i = 0; i < data.length; i++) {
+				allListDom += '<li>'+
+									'<div class="shopListSelect">'+
+										'<!-- 未选中 -->'+
+										'<i class="iconfont icon-round singleSelectNo"></i>'+
+										'<!-- 选中 -->'+
+										'<i class="iconfont icon-roundcheckfill singleSelectHas"></i>'+
+									'</div>'+
+									'<div class="rightDetail">'+
+										'<div class="rightDetailImg">'+
+											'<img src="../../img/'+data[i].shopImgName+'" >'+
+										'</div>'+
+										'<div class="titleAndPrice">'+
+											'<h1>'+ data[i].shopTitle +'</h1>'+
+											'<div class="priceAndSum">'+
+												'<h3>&yen;<span>'+ data[i].shopPrice +'</span>元</h3>'+
+												'<div class="quantity">'+
+													'<div class="addAndReduce">'+
+														'<span class="reduce"><i class="iconfont icon-jian-xianxingyuankuang"></i></span>'+									
+														'<span class="thisSum">'+ data[i].shopSum +'</span>'+
+														'<span class="add"><i class="iconfont icon-jiahao"></i></span>'+
+													'</div>'+
+													'<span>数量：</span>'+
+												'</div>'+
+											'</div>'+
+										'</div>'+
+									'</div>'+
+									'<div class="delThisShop">'+
+										'<span class="delBtn">删除</span>'+
+									'</div>'+
+								'</li>'
+			}
+			$(".allList").html(allListDom);
 			/* 选中所有和取消所有 */
 			$(".selectThisStoreAll").on("click",function(){
 				if ($(this).find(".selectNo")[0].style.display == "block") {		//如果未选中
