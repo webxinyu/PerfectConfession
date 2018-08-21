@@ -412,6 +412,11 @@
 				$(".delBtn").removeClass("delBtnShow");
 				//保存删除后的购物车商品列表
 				localStorage.storageShopCart = JSON.stringify(data);
+				totalPrice = 0;
+				for (var j = 0;j < data.length;j++) {
+					totalPrice += parseFloat(data[j].shopPrice) * parseFloat(data[j].shopSum);
+				}		
+				$("#priceNum").text(totalPrice);
 				setTimeout(function(){
 					$(".delThisShop").css("display","none");
 				},300)				
@@ -469,6 +474,10 @@
 // 				}
 // 				$("#priceNum").text(sumShop);
 			});
+			/* 去结算跳转到支付页面  模拟支付操作 */
+			$(".toSettle").on("click",function(){
+				window.location.href = 'payPage.html';
+			})
 		</script>
 	</body>
 </html>

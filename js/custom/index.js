@@ -98,7 +98,14 @@ $("#indexAddCart").on("click",function(){
 	var flag = false;		//判断本地存储购物车是够有选中商品的判断的开关
 	var thisSopIndex = 0;
 	//获取存储在本地的购物车列表
-	storageShopCart = JSON.parse(localStorage.storageShopCart);
+	//判断购物车是否为空
+	if (localStorage.storageShopCart) {
+		//首页购物车按钮数字变化
+		var storageShopCart = JSON.parse(localStorage.storageShopCart);
+	} else{
+		$("#totalCartShop").text("0");
+		var storageShopCart = [];
+	}
 	//获取商品id*** 注释：这里用图片id模仿 ***
 	var shopId = getImgName();
 	//获取商品的价格
@@ -127,17 +134,19 @@ $("#indexAddCart").on("click",function(){
 	} else{			//没有当前商品
 		storageShopCart.push(shopArr);
 	}
-	localStorage.storageShopCart = JSON.stringify(storageShopCart);
+	
 	//隐藏购物车弹窗
 	$(".footerPopUp").css("display","none");
 	$(".shopSum").text("1");
 	//显示成功消息窗
 	$(".tipsCon").css("display","block");
-	setTimeout(function () {
-		$(".tipsCon").css("display","none");
-	},2000);
+	//储存商品信息
+	localStorage.storageShopCart = JSON.stringify(storageShopCart);
 	//首页购物车按钮数字变化
 	$("#totalCartShop").text(JSON.parse(localStorage.storageShopCart).length);
+	setTimeout(function () {
+		$(".tipsCon").css("display","none");
+	},1500);
 })
 
 
