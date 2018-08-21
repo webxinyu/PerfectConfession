@@ -102,26 +102,43 @@
 				width: 3.7rem;
 			}
 			.titleAndPrice>h1 {
-				height: 1rem;
+				height: 0.8rem;
 				font-size: 0.24rem;
-				line-height: 0.5rem;
+				line-height: 0.4rem;
 				font-weight: normal;
 			}
 			.titleAndPrice .priceAndSum {
-				height: 0.6rem;
+				height: 0.8rem;
 				display: flex;
 			}
 			.titleAndPrice .priceAndSum>h3 {
-				height: 0.6rem;
-				line-height: 0.6rem;
+				flex: 1;
+				height: 0.35rem;
+				line-height: 0.35rem;
 				font-size: 0.26rem;
 				color: #f00;
-				flex: 1;
+				font-weight: normal;
+			}
+			.titleAndPrice .priceAndSum>h3>span:nth-of-type(1) {
+				height: 0.35rem;
+				line-height: 0.35rem;
+				font-size: 0.26rem;
+				color: #f00;
+			}
+			.titleAndPrice .priceAndSum>h3>span:nth-of-type(2) {
+				font-size: 0.2rem;
+				color: #666;
+				height: 0.15rem;
+				line-height: 0.15rem;
+			}
+			.titleAndPrice .priceAndSum>h3>span:nth-of-type(2)>b {
+				font-weight: normal;
 			}
 			.titleAndPrice .priceAndSum .quantity {
-				flex: 2;
+				flex: 1.5;
 				height: 0.6rem;
 				overflow: hidden;
+				margin-top: 0.2rem;
 			}
 			.titleAndPrice .priceAndSum .quantity span {
 				float: right;
@@ -287,41 +304,11 @@
 					<span class="delBtn">删除</span>
 				</div>
 			</li>
-			<li>
-				<div class="shopListSelect">
-					<!-- 未选中 -->
-					<i class="iconfont icon-round singleSelectNo"></i>
-					<!-- 选中 -->
-					<i class="iconfont icon-roundcheckfill singleSelectHas"></i>
-				</div>
-				<div class="rightDetail">
-					<div class="rightDetailImg">
-						<img src="../../img/nibbles03.png" >
-					</div>
-					<div class="titleAndPrice">
-						<h1>【买五送一】山核桃为香瓜子360g</h1>
-						<div class="priceAndSum">
-							<h3>&yen;<span>6.8</span>元</h3>
-							<div class="quantity">
-								<div class="addAndReduce">
-									<span class="reduce"><i class="iconfont icon-jian-xianxingyuankuang"></i></span>									
-									<span class="thisSum">1</span>
-									<span class="add"><i class="iconfont icon-jiahao"></i></span>
-								</div>
-								<span>数量：</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="delThisShop">
-					<span class="delBtn">删除</span>
-				</div>
-			</li>
 		</ul>
 		<footer>
 			<div class="leftTotalPrice">
 				<div class="shopTotalPrice">
-					合计：<h1>&yen;<span id="priceNum">6.8</span>元</h1>
+					合计：<h1>&yen;<span id="priceNum">0</span>元</h1>
 				</div>
 				<div class="distributionFee">
 					配送费：<h1>&yen;<span id="distributionFeeNum">0</span>元</h1>
@@ -342,9 +329,7 @@
 			for (var i = 0; i < data.length; i++) {
 				allListDom += '<li>'+
 									'<div class="shopListSelect">'+
-										'<!-- 未选中 -->'+
 										'<i class="iconfont icon-round singleSelectNo"></i>'+
-										'<!-- 选中 -->'+
 										'<i class="iconfont icon-roundcheckfill singleSelectHas"></i>'+
 									'</div>'+
 									'<div class="rightDetail">'+
@@ -354,7 +339,7 @@
 										'<div class="titleAndPrice">'+
 											'<h1>'+ data[i].shopTitle +'</h1>'+
 											'<div class="priceAndSum">'+
-												'<h3>&yen;<span>'+ data[i].shopPrice +'</span>元</h3>'+
+												'<h3>&yen;<span class="nowShopPr">'+ data[i].shopPrice +'</span>元<br /><span>剩余：<b class="surplus">'+data[i].shopSurplusNum+'</b></span></h3>'+
 												'<div class="quantity">'+
 													'<div class="addAndReduce">'+
 														'<span class="reduce"><i class="iconfont icon-jian-xianxingyuankuang"></i></span>'+									
@@ -374,27 +359,44 @@
 			$(".allList").html(allListDom);
 			/* 选中所有和取消所有 */
 			$(".selectThisStoreAll").on("click",function(){
-				if ($(this).find(".selectNo")[0].style.display == "block") {		//如果未选中
+				if ($(this).find(".selectNo")[0].style.display == "block") {		//选中所有商品
 					$(".selectNo").css("display","none");
 					$(".selectHas").css("display","block");
 					$(".singleSelectNo").css("display","none");
 					$(".singleSelectHas").css("display","block");
+					for (var j = 0;j < data.length;j++) {
+						totalPrice += parseFloat(data[j].shopPrice) * parseFloat(data[j].shopSum);
+					}					
+					$("#priceNum").text(totalPrice);
 					
-				} else{			//如果选中
+				} else{			//取消选中
 					$(".selectNo").css("display","block");
 					$(".selectHas").css("display","none");
 					$(".singleSelectNo").css("display","block");
 					$(".singleSelectHas").css("display","none");
+					$("#priceNum").text("0");
 				}
 			})
 			/* 单个商品的选中与取消 */
-			$(".singleSelectNo").on("click",function(){		//如果未选中
+			$(".singleSelectNo").on("click",function(){		//选中商品
 				$(this).css("display","none");
 				$(this).parent().find(".singleSelectHas").css("display","block");
+				//获取当前商品的单品数量
+				var thisShopSum = parseFloat($(this).parent().next().find(".thisSum").text());				
+				//获取当前商品的单价
+				var thisShopPrive = parseFloat($(this).parent().next().find(".nowShopPr").text());
+				var reducePrice = parseFloat($("#priceNum").text()) + thisShopSum * thisShopPrive;				
+				$("#priceNum").text(reducePrice);
 			})
-			$(".singleSelectHas").on("click",function(){		//如果选中
+			$(".singleSelectHas").on("click",function(){		//取消选中
 				$(this).css("display","none");
 				$(this).parent().find(".singleSelectNo").css("display","block");
+				//获取当前商品的单品数量
+				var thisShopSum = parseFloat($(this).parent().next().find(".thisSum").text());				
+				//获取当前商品的单价
+				var thisShopPrive = parseFloat($(this).parent().next().find(".nowShopPr").text());
+				var reducePrice = parseFloat($("#priceNum").text()) - thisShopSum * thisShopPrive;				
+				$("#priceNum").text(reducePrice);
 			})
 			/* 点击编辑按钮 */
 			$("#compileBtn").on("click",function(){
@@ -408,13 +410,65 @@
 				$(this).css("display","none");
 				$("#compileBtn").css("display","block");
 				$(".delBtn").removeClass("delBtnShow");
+				//保存删除后的购物车商品列表
+				localStorage.storageShopCart = JSON.stringify(data);
 				setTimeout(function(){
 					$(".delThisShop").css("display","none");
 				},300)				
 			});
 			$(".delBtn").on("click",function(){			//删除按钮
 				$(this).parent().parent().css("display","none");
+				//获取要删除商品在数组中的索引值
+				var arrayIndex = $(this).parent().parent().prevAll();
+				//删除对应索引的值
+				data.splice(arrayIndex, 1);
 			})
+			//购物车商品总价格
+			var totalPrice = 0;
+			for (var j = 0;j < data.length;j++) {
+				totalPrice += parseFloat(data[j].shopPrice) * parseFloat(data[j].shopSum);
+			}		
+			$("#priceNum").text(totalPrice);
+			/* 点击减号 */
+			$(".reduce").on("touchstart",function(){
+				var sumShop = 0;  //总数量
+				var current = parseInt($(this).parent().find(".thisSum").text());	//单品数量
+				current--;
+				if (current < 0) {		//单品数量小于0，跳出当前按钮事件
+					current = 0;
+					return false;
+				}
+				$(this).parent().find(".thisSum").text(current);
+				totalPrice -= parseFloat($(this).parent().parent().prev().find("span").text());		//计算总价
+				if (totalPrice <= 0) {
+					totalPrice = 0;
+				}
+				$("#priceNum").text(totalPrice);
+				//总件数
+// 				for (var j = 0;j < $(".allList li").length;j++) {
+// 					sumShop += parseInt($(".thisSum").eq(j).text());
+// 				}
+// 				$("#priceNum").text(sumShop);
+			});
+				/* 点击加号 */
+			$(".add").on("touchstart",function(){
+				var sumShop = 0;  //总数量
+				var current = parseFloat($(this).parent().find(".thisSum").text());	//单品数量
+				var surplusNum =  parseInt($(this).parent().parent().prev().find(".surplus").text());		//剩余商品数量
+				current++;
+				if (current > surplusNum) {		//超出剩余商品储量，跳出当前按钮事件
+					current = surplusNum;
+					return false;
+				}
+				$(this).parent().find(".thisSum").text(current);
+				totalPrice += parseFloat($(this).parent().parent().prev().find("span").text());		//计算总价
+				$("#priceNum").text(totalPrice);
+				//总件数
+// 				for (var j = 0;j < $(".allList li").length;j++) {
+// 					sumShop += parseInt($(".thisSum").eq(j).text());
+// 				}
+// 				$("#priceNum").text(sumShop);
+			});
 		</script>
 	</body>
 </html>

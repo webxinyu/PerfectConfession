@@ -109,8 +109,10 @@ $("#indexAddCart").on("click",function(){
 	var shopTitle = $(".addCartShopTitle").text();
 	//商品图片名称
 	var shopImgName = shopId;
+	//剩余商品数量
+	var shopSurplusNum = $("#surplusNum").text();
 	//当前商品信息
-	var shopArr = {"shopId":shopId,"shopPrice":shopPrice,"shopSum":shopSum,"shopTitle":shopTitle,"shopImgName":shopImgName}
+	var shopArr = {"shopId":shopId,"shopPrice":shopPrice,"shopSum":shopSum,"shopTitle":shopTitle,"shopImgName":shopImgName,"shopSurplusNum":shopSurplusNum}
 	//判断本地存储的购物车列表中是否有当前选择的商品
 	for (var i = 0; i < storageShopCart.length; i++) {
 		if (storageShopCart[i].shopId == shopId) {
