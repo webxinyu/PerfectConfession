@@ -81,7 +81,8 @@ $("#openStorePage").on("click",function(){		//商家信息
 	window.location.href = 'html/storePage.html';
 });
 $("#openEcologicalAgriculturePage").on("click",function(){		//生态农业
-	window.location.href = 'html/ecologicalAgriculturePage.html';
+	// window.location.href = 'html/ecologicalAgriculturePage.html';
+	window.location.href = 'html/canvas/index.html';
 });
 $("#openFreeDeliveryArea").on("click",function(){		//免费送货区
 	window.location.href = 'html/freeDeliveryArea.html';
