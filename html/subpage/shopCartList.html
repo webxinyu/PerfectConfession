@@ -61,12 +61,16 @@
 				border-bottom: 1px #ccc solid;
 				background: #fff;
 				padding: 0 0.2rem;
+				margin-bottom: 1.2rem;
 			}
 			.allList li {
 				height: 2rem;
 				border-bottom: 1px #eee solid;
 				clear: both;
 				position: relative;
+			}
+			.allList li:nth-last-of-type {
+				border-bottom: none;
 			}
 			.shopListSelect {			/* 左侧选择按钮 */
 				float: left;
@@ -318,7 +322,6 @@
 				去结算
 			</div>
 		</footer>
-		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/swiper-4.2.6.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/swiper.animate1.0.3.min.js" type="text/javascript" charset="utf-8"></script>
@@ -476,7 +479,8 @@
 			});
 			/* 去结算跳转到支付页面  模拟支付操作 */
 			$(".toSettle").on("click",function(){
-				window.location.href = 'payPage.html';
+				var totalAmont = $("#priceNum").text();
+				window.location.href = 'payPage.html?totalAmont='+totalAmont;
 			})
 		</script>
 	</body>

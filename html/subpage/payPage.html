@@ -7,19 +7,164 @@
 		<link rel="stylesheet" type="text/css" href="../../css/custom/reset.css"/>
 		<link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
 		<link rel="stylesheet" type="text/css" href="../../css/swiper-4.2.6.min.css"/>
-		<link rel="stylesheet" type="text/css" href="../../css/animate.min.css"/>
 		<style type="text/css">
-
+			header {
+				height: 1rem;
+				line-height: 1rem;
+				text-align: center;
+				font-size: 0.3rem;
+				color: #fff;
+				background: #f60;
+			}
+			.aggregateAmount {		/* 总金额 */
+				height: 2rem;
+				line-height: 2rem;
+				padding: 0 0.2rem;
+				background: #fff;
+				font-size: 0.34rem;
+			}
+			.aggregateAmount>span {
+				color: #f00;
+			}
+			.selectPay {
+				background: #fff;
+				padding: 0 0.2rem;
+				border-top: 1px #ccc solid;
+				border-bottom: 1px #ccc solid;
+			}
+			.selectPay li {
+				border-bottom: 1px #cecece solid;
+				display: flex;
+				padding: 0.4rem 0;
+				height: 0.6rem;
+			}
+			.selectPay li:last-of-type {
+				border-bottom: none;
+			}
+			.selectPay li .modeOfPayment {
+				flex: 5;
+				height: 0.6rem;
+				overflow: hidden;
+			}
+			.selectPay li .modeOfPayment img {
+				float: left;
+				height: 0.6rem;
+			}
+			.selectPay li .rightDiv {
+				flex: 1;
+			}
+			.selectPay li .rightDiv input {
+				float: right;
+				height: 0.4rem;
+				width: 0.4rem;
+				margin: 0;
+				margin-top: 0.1rem;
+				background: #fff;
+				color: #f60;
+			}
+			.surePay {
+				width: 5rem;
+				height: 1rem;
+				line-height: 1rem;
+				text-align: center;
+				margin: 0 auto;
+				margin-top: 0.4rem;
+				background: #f60;
+				color: #fff;
+				font-size: 0.3rem;
+				border-radius: 1rem;
+			}
+			.tipsCon {			/* 消息弹窗 */
+				position: fixed;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				z-index: 10000;
+				background: rgba(0,0,0,0);
+				text-align: center;
+				display: none;
+			}
+			.tipsContent {
+				display: inline-block;
+				height: 0.8rem;
+				line-height: 0.8rem;
+				border-radius: 0.8rem;
+				min-width: 3rem;
+				font-size: 0.3rem;
+				background: rgba(0,0,0,0.8);
+				color: #fff;
+				margin-top: 80%;
+			}
 		</style>
 	</head>
 	<body>
-		
+		<header>订单支付</header>
+		<!-- 总金额 -->
+		<div class="aggregateAmount">
+			总金额：<span id="aggregateAmountValue">0</span>元
+		</div>
+		<ul class="selectPay">
+			<li>
+				<div class="modeOfPayment">
+					<img src="../../img/zfbpay.png" >
+				</div>
+				<div class="rightDiv">
+					<input type="radio" name="payment" id="" value="" />
+				</div>
+			</li>
+			<li>
+				<div class="modeOfPayment">
+					<img src="../../img/wxpay.png" >
+				</div>
+				<div class="rightDiv">
+					<input type="radio" name="payment" id="" value="" />
+				</div>
+			</li>
+		</ul>
+		<div class="surePay">
+			确认支付
+		</div>
+		<!-- 消息弹窗 -->
+		<div class="tipsCon">
+			<div class="tipsContent">
+				支付成功
+			</div>
+		</div>
 		<script src="../../js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/swiper-4.2.6.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/swiper.animate1.0.3.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/rem.js" type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript">			    
+		<script type="text/javascript">		
+			var aggregateAmountValue = GetRequest().totalAmont;
+			$("#aggregateAmountValue").text(aggregateAmountValue);
+			$(".surePay").on("click",function(){
+				//显示成功消息窗
+				$(".tipsCon").css("display","block");
+				setTimeout(function () {
+					localStorage.storageShopCart = JSON.stringify([]);
+					$(".tipsCon").css("display","none");
+					window.location.href = '../../home.html';
+				},1500);
+			})
 			
+			
+			
+			
+			
+			/* 获取url参数方法 */
+			function GetRequest() {   
+				var url = location.search; //获取url中"?"符后的字串   
+				var theRequest = new Object();   
+				if (url.indexOf("?") != -1) {   
+					var str = url.substr(1);   
+					strs = str.split("&");   
+					for(var i = 0; i < strs.length; i ++) {   
+						theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);   
+					}   
+				}   
+				return theRequest;   
+			}
 		</script>
 	</body>
 </html>
